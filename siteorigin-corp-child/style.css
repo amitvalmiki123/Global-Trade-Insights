@@ -13,32 +13,60 @@ Updated: 2026-09-08
 
 /* ==========================================================================
    Clazar-style blog design — SiteOrigin Corp child theme
-   Layout, colors & card sizing modelled on clazar.io/blog
+   Design system reverse-engineered from clazar.io/blog production CSS
+   (Red Hat Display / Red Hat Text, lavender sections, gray cards,
+    indigo headings, purple + orange accents).
    ========================================================================== */
 
 :root {
-	--clz-navy:        #000060;
-	--clz-navy-soft:   #1a1a7a;
-	--clz-ink:         #0f1136;
-	--clz-body:        #565874;
-	--clz-muted:       #9496ad;
-	--clz-accent:      #ff7748;
-	--clz-accent-2:    #f0562e;
-	--clz-accent-soft: #fff1ec;
-	--clz-line:        #e9eaf5;
-	--clz-surface:     #f6f7fc;
-	--clz-white:       #ffffff;
-	--clz-radius:      18px;
-	--clz-radius-sm:   12px;
-	--clz-shadow:      0 10px 30px -12px rgba(15, 17, 54, 0.14);
-	--clz-shadow-lg:   0 24px 60px -20px rgba(15, 17, 54, 0.28);
-	--clz-font-head:   "Outfit", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	--clz-font-body:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	/* Brand */
+	--clz-indigo:    #040070;   /* primary heading color */
+	--clz-indigo-2:  #05008c;   /* hero heading */
+	--clz-navy:      #000060;   /* buttons / active states */
+	--clz-purple:    #5c4cf9;   /* purple accent */
+	--clz-purple-2:  #5a4df5;
+	--clz-purple-3:  #6867b8;
+	--clz-orange:    #ff7748;   /* CTA orange */
+	--clz-orange-2:  #e6673e;   /* active link / tag text */
+	--clz-orange-3:  #cc5936;   /* dark orange hover */
+	--clz-orange-soft:#fde9e2;  /* tag background */
+
+	/* Backgrounds */
+	--clz-lavender:   #dedbfd;  /* section head */
+	--clz-lavender-2: #f5f4fe;  /* cards section */
+	--clz-lavender-3: #ebe9fd;  /* suggested */
+	--clz-gray-bg:    #f8f8fd;  /* related / gray sections */
+	--clz-card-bg:    #f9f9f9;  /* card */
+	--clz-card-hover: #f2f2f2;
+
+	/* Text */
+	--clz-text:   #4a5158;  /* body gray */
+	--clz-muted:  #6e777e;
+	--clz-faint:  #8f979e;
+	--clz-black:  #1a1a1a;
+	--clz-white:  #ffffff;
+
+	/* Auxiliary */
+	--clz-teal:   #00b2d1;  /* back button */
+	--clz-blue:   #0080ff;  /* blue links */
+	--clz-yellow: #ffbd12;
+
+	/* Fonts */
+	--clz-font-head: "Red Hat Display", "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--clz-font-hero: "Figtree", "Red Hat Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--clz-font-body: "Red Hat Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+
+	--clz-container: 1206px;
+	--clz-radius: 8px;
 }
 
 /* --------------------------------------------------------------------------
-   1. Full-width blog area (Clazar blog has no sidebar)
+   0. Full-width blog area
    -------------------------------------------------------------------------- */
+
+html, body {
+	overflow-x: hidden;
+}
 
 body.blog .content-area,
 body.archive .content-area,
@@ -49,24 +77,40 @@ body.single-post .site-main {
 	width: 100% !important;
 	max-width: 100% !important;
 	float: none !important;
-	margin-left: 0 !important;
-	margin-right: 0 !important;
-	padding-left: 0 !important;
-	padding-right: 0 !important;
+	margin: 0 !important;
+	padding: 0 !important;
 }
 
 body.blog #content > .corp-container,
 body.archive #content > .corp-container,
 body.single-post #content > .corp-container {
-	max-width: 1220px;
+	max-width: 100% !important;
+	width: 100% !important;
+	padding: 0 !important;
+	margin: 0 !important;
+}
+
+body.blog .site-content,
+body.archive .site-content,
+body.single-post .site-content {
+	padding: 0;
+}
+
+.clz-container {
+	width: 100%;
+	max-width: var(--clz-container);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: 40px;
+	padding-right: 40px;
 }
 
 .clz-blog,
 .clz-single {
 	font-family: var(--clz-font-body);
-	color: var(--clz-body);
+	color: var(--clz-text);
 	-webkit-font-smoothing: antialiased;
-	padding: 64px 24px 80px;
+	line-height: 150%;
 }
 
 .clz-blog a,
@@ -75,188 +119,226 @@ body.single-post #content > .corp-container {
 }
 
 /* --------------------------------------------------------------------------
-   2. Featured hero (latest post)
+   1. Section head (lavender)
    -------------------------------------------------------------------------- */
 
-.clz-hero {
-	display: grid;
-	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
-	gap: 48px;
-	align-items: center;
-	padding: 48px;
-	background: var(--clz-surface);
-	border: 1px solid var(--clz-line);
-	border-radius: 28px;
-	margin-bottom: 56px;
+.clz-sechead {
+	background-color: var(--clz-lavender);
+	padding-top: 120px;
+	padding-bottom: 88px;
+	text-align: center;
+	overflow: visible;
 }
 
-.clz-hero-body {
+.clz-sechead-inner {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	gap: 18px;
+	align-items: center;
+	gap: 16px;
+	max-width: 820px;
+	margin: 0 auto;
 }
 
 .clz-kicker {
 	display: inline-flex;
 	align-items: center;
-	padding: 7px 14px;
-	font-size: 12.5px;
-	font-weight: 600;
-	letter-spacing: 0.02em;
-	text-transform: uppercase;
-	color: var(--clz-accent-2);
-	background: var(--clz-accent-soft);
-	border-radius: 999px;
+	gap: 8px;
+	color: var(--clz-indigo);
+	font-family: var(--clz-font-body);
+	font-size: 14px;
+	font-weight: 700;
+	line-height: 130%;
 }
 
-.clz-hero-title {
+.clz-kicker::before {
+	content: "";
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	background-color: var(--clz-orange);
+}
+
+.clz-blog-title {
 	margin: 0;
-	font-family: var(--clz-font-head);
-	font-size: clamp(26px, 3.4vw, 40px);
+	color: var(--clz-indigo-2);
+	font-family: var(--clz-font-hero);
+	font-size: 44px;
 	font-weight: 700;
-	line-height: 1.12;
+	line-height: 125%;
 	letter-spacing: -0.02em;
 }
 
-.clz-hero-title a {
-	color: var(--clz-ink);
-	background-image: linear-gradient(var(--clz-accent), var(--clz-accent));
-	background-repeat: no-repeat;
-	background-size: 0% 3px;
-	background-position: 0 100%;
-	transition: background-size 0.35s ease, color 0.25s ease;
-}
-
-.clz-hero-title a:hover {
-	color: var(--clz-ink);
-	background-size: 100% 3px;
-}
-
-.clz-hero-author {
-	display: flex;
-	align-items: center;
-	gap: 12px;
-	font-size: 15px;
-	color: var(--clz-body);
-}
-
-.clz-hero-sep {
-	color: var(--clz-muted);
-}
-
-.clz-hero-excerpt {
+.clz-blog-subtitle {
 	margin: 0;
-	font-size: 16px;
-	line-height: 1.7;
-	color: var(--clz-body);
-}
-
-.clz-hero-tags,
-.clz-card-tags,
-.clz-post-tags {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 8px;
-}
-
-.clz-hero-media {
-	display: block;
-	position: relative;
-	width: 100%;
-	aspect-ratio: 16 / 10;
-	border-radius: var(--clz-radius);
-	overflow: hidden;
-	box-shadow: var(--clz-shadow-lg);
-}
-
-.clz-hero-media img,
-.clz-hero-media .clz-media-img {
-	transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.clz-hero:hover .clz-hero-media img {
-	transform: scale(1.04);
+	max-width: 640px;
+	color: var(--clz-muted);
+	font-size: 17px;
+	line-height: 150%;
 }
 
 /* --------------------------------------------------------------------------
-   3. Category filter pills
+   2. Featured post (horizontal card)
    -------------------------------------------------------------------------- */
+
+.clz-featured-section {
+	background-color: var(--clz-lavender);
+	padding-bottom: 80px;
+}
+
+.clz-featured {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	background-color: var(--clz-card-bg);
+	border-radius: var(--clz-radius);
+	overflow: hidden;
+}
+
+.clz-featured-body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 18px;
+	padding: 40px 44px;
+}
+
+.clz-featured-read {
+	color: var(--clz-faint);
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.clz-featured-title {
+	margin: 0;
+	color: var(--clz-indigo);
+	font-family: var(--clz-font-head);
+	font-size: clamp(24px, 2.6vw, 34px);
+	font-weight: 700;
+	line-height: 120%;
+	letter-spacing: -0.01em;
+}
+
+.clz-featured-title a {
+	color: inherit;
+}
+
+.clz-featured-title a:hover {
+	color: var(--clz-purple);
+}
+
+.clz-featured-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	margin-top: auto;
+	color: var(--clz-muted);
+	font-size: 14px;
+	line-height: 20px;
+}
+
+.clz-featured-excerpt {
+	margin: 0;
+	color: var(--clz-text);
+	font-size: 16px;
+	line-height: 160%;
+}
+
+.clz-featured-media {
+	display: block;
+	position: relative;
+	min-height: 320px;
+	height: 100%;
+}
+
+.clz-featured-media img {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+/* --------------------------------------------------------------------------
+   3. Cards section (light lavender)
+   -------------------------------------------------------------------------- */
+
+.clz-cards-section {
+	background-color: var(--clz-lavender-2);
+	padding-top: 40px;
+	padding-bottom: 80px;
+}
+
+/* Filter pill bar */
 
 .clz-filters {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 10px;
-	margin-bottom: 40px;
+	align-items: center;
+	gap: 4px 28px;
+	background-color: var(--clz-white);
+	border-radius: 46px;
+	padding: 16px 28px;
+	margin-bottom: 48px;
 }
 
 .clz-filter {
-	display: inline-flex;
-	align-items: center;
-	padding: 10px 20px;
-	font-size: 14px;
-	font-weight: 600;
-	color: var(--clz-body);
-	background: var(--clz-surface);
-	border: 1px solid var(--clz-line);
-	border-radius: 999px;
-	transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+	color: var(--clz-text);
+	font-family: var(--clz-font-body);
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 22px;
+	padding: 6px 2px;
+	border-bottom: 3px solid transparent;
+	transition: color 0.2s ease, border-color 0.2s ease;
 }
 
 .clz-filter:hover {
-	color: var(--clz-ink);
-	border-color: #d7d9ea;
-	transform: translateY(-1px);
+	color: var(--clz-indigo);
 }
 
 .clz-filter.is-active {
-	color: var(--clz-white);
-	background: var(--clz-navy);
-	border-color: var(--clz-navy);
+	color: var(--clz-indigo);
+	border-bottom-color: var(--clz-purple);
+	font-weight: 700;
 }
 
-/* --------------------------------------------------------------------------
-   4. Card grid
-   -------------------------------------------------------------------------- */
+/* Card grid */
 
 .clz-grid {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 1fr));
-	gap: 32px 28px;
+	gap: 60px;
 }
 
 .clz-card {
 	display: flex;
 	flex-direction: column;
-	background: var(--clz-white);
-	border: 1px solid var(--clz-line);
+	background-color: var(--clz-card-bg);
 	border-radius: var(--clz-radius);
 	overflow: hidden;
-	transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+	color: var(--clz-black);
+	transition: background-color 0.25s ease;
 }
 
 .clz-card:hover {
-	transform: translateY(-6px);
-	box-shadow: var(--clz-shadow-lg);
-	border-color: transparent;
+	background-color: var(--clz-card-hover);
 }
 
 .clz-card-media {
 	display: block;
 	position: relative;
 	width: 100%;
-	aspect-ratio: 16 / 9;
+	height: 216px; /* 13.5rem */
 	overflow: hidden;
-	background: var(--clz-surface);
+	background-color: var(--clz-lavender-3);
 }
 
-.clz-media-img,
 .clz-card-media img {
 	display: block;
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .clz-card:hover .clz-card-media img {
@@ -266,49 +348,58 @@ body.single-post #content > .corp-container {
 .clz-card-body {
 	display: flex;
 	flex-direction: column;
-	align-items: flex-start;
-	gap: 14px;
-	padding: 22px 22px 24px;
-	flex: 1;
+	align-items: stretch;
+	gap: 24px;
+	padding: 24px 24px 18px;
+	height: 100%;
 }
 
 .clz-card-meta {
 	display: flex;
+	justify-content: space-between;
 	align-items: center;
-	gap: 8px;
-	font-size: 13px;
-	font-weight: 500;
+	gap: 12px;
 	color: var(--clz-muted);
+	font-size: 14px;
+	line-height: 20px;
 }
 
-.clz-card-dot {
-	color: var(--clz-accent);
+.clz-card-read {
+	color: var(--clz-faint);
+	white-space: nowrap;
 }
 
 .clz-card-title {
 	margin: 0;
+	color: var(--clz-black);
 	font-family: var(--clz-font-head);
-	font-size: 19px;
-	font-weight: 600;
-	line-height: 1.3;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 135%;
 	letter-spacing: -0.01em;
 }
 
 .clz-card-title a {
-	color: var(--clz-ink);
-	transition: color 0.2s ease;
+	color: inherit;
 }
 
 .clz-card-title a:hover {
-	color: var(--clz-accent-2);
+	color: var(--clz-purple);
 }
 
 .clz-card-foot {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
 	margin-top: auto;
 }
 
 .clz-card-tags {
-	margin-top: 2px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
 }
 
 /* Author row */
@@ -316,86 +407,88 @@ body.single-post #content > .corp-container {
 .clz-author {
 	display: inline-flex;
 	align-items: center;
-	gap: 10px;
+	gap: 8px;
 }
 
 .clz-avatar {
-	width: 32px;
-	height: 32px;
+	width: 24px;
+	height: 24px;
 	border-radius: 50%;
 	object-fit: cover;
-	border: 2px solid var(--clz-white);
-	box-shadow: 0 0 0 1.5px var(--clz-line);
-}
-
-.clz-hero-author .clz-avatar {
-	width: 40px;
-	height: 40px;
 }
 
 .clz-author-name {
+	color: var(--clz-muted);
 	font-size: 14px;
-	font-weight: 600;
-	color: var(--clz-ink);
+	font-weight: 400;
+	line-height: 20px;
 }
 
-/* Category tag pill */
+.clz-featured-meta .clz-avatar {
+	width: 32px;
+	height: 32px;
+}
+
+.clz-featured-meta .clz-author-name {
+	color: var(--clz-muted);
+	font-size: 14px;
+}
+
+/* Category tag pill (orange, Clazar style) */
 
 .clz-tag {
 	display: inline-flex;
 	align-items: center;
-	padding: 5px 12px;
-	font-size: 12.5px;
+	color: var(--clz-orange-2);
+	background-color: var(--clz-orange-soft);
+	border-radius: var(--clz-radius);
+	padding: 4px 12px;
+	font-size: 14px;
 	font-weight: 600;
-	color: var(--clz-accent-2);
-	background: var(--clz-accent-soft);
-	border-radius: 999px;
-	transition: background 0.2s ease, color 0.2s ease;
+	line-height: 150%;
+	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .clz-tag:hover {
-	background: var(--clz-accent);
+	background-color: var(--clz-orange);
 	color: var(--clz-white);
 }
 
 /* --------------------------------------------------------------------------
-   5. Archive header
+   3b. Placeholder (posts without a featured image)
    -------------------------------------------------------------------------- */
 
-.clz-archive-head {
-	margin-bottom: 36px;
+.clz-ph {
+	display: block;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	background:
+		radial-gradient(120% 120% at 20% 10%, rgba(255, 119, 72, 0.25), transparent 45%),
+		radial-gradient(120% 120% at 90% 90%, rgba(92, 76, 249, 0.30), transparent 50%),
+		linear-gradient(135deg, #040070 0%, #05008c 55%, #5c4cf9 100%);
 }
 
-.clz-archive-title {
-	margin: 0 0 10px;
-	font-family: var(--clz-font-head);
-	font-size: clamp(30px, 4vw, 44px);
-	font-weight: 700;
-	line-height: 1.1;
-	letter-spacing: -0.02em;
-	color: var(--clz-ink);
-}
-
-.clz-archive-desc {
-	margin: 0;
-	max-width: 640px;
-	font-size: 16px;
-	line-height: 1.7;
-	color: var(--clz-body);
+.clz-card-media,
+.clz-featured-media {
+	background-color: var(--clz-lavender-3);
 }
 
 /* --------------------------------------------------------------------------
-   6. Pagination
+   4. Pagination ("View more")
    -------------------------------------------------------------------------- */
 
 .clz-pagination {
-	margin-top: 56px;
+	margin-top: 48px;
+	text-align: center;
 }
 
 .clz-pagination .nav-links {
 	display: flex;
 	justify-content: center;
-	gap: 10px;
+	align-items: center;
+	gap: 12px;
 }
 
 .clz-pagination .page-numbers {
@@ -404,78 +497,189 @@ body.single-post #content > .corp-container {
 	justify-content: center;
 	min-width: 44px;
 	height: 44px;
-	padding: 0 16px;
-	font-size: 14.5px;
+	padding: 0 14px;
+	color: var(--clz-indigo);
+	border: 1px solid var(--clz-navy);
+	border-radius: 2px;
+	font-size: 16px;
 	font-weight: 600;
-	color: var(--clz-body);
-	background: var(--clz-white);
-	border: 1px solid var(--clz-line);
-	border-radius: 12px;
-	transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+	line-height: 120%;
+	transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
 }
 
 .clz-pagination .page-numbers:hover {
-	color: var(--clz-ink);
-	border-color: #d7d9ea;
+	transform: scale(1.05);
+	background-color: var(--clz-indigo);
+	color: var(--clz-white);
 }
 
 .clz-pagination .page-numbers.current {
+	background-color: var(--clz-indigo);
 	color: var(--clz-white);
-	background: var(--clz-navy);
-	border-color: var(--clz-navy);
+	border-color: var(--clz-indigo);
 }
 
 .clz-pagination .page-numbers.dots {
 	border-color: transparent;
 	background: transparent;
+	color: var(--clz-text);
 }
 
 .clz-empty {
-	padding: 48px 0;
+	padding: 60px 0;
 	font-size: 16px;
+	text-align: center;
+	color: var(--clz-text);
+}
+
+/* --------------------------------------------------------------------------
+   5. Purple CTA band (blog)
+   -------------------------------------------------------------------------- */
+
+.clz-cta {
+	background-color: var(--clz-purple);
+	color: var(--clz-white);
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+
+.clz-cta-inner {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+	text-align: center;
+}
+
+.clz-cta-title {
+	margin: 0;
+	color: var(--clz-white);
+	font-family: var(--clz-font-head);
+	font-size: clamp(26px, 3vw, 36px);
+	font-weight: 700;
+	line-height: 120%;
+	letter-spacing: -0.01em;
+}
+
+.clz-cta-actions {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 16px;
+}
+
+.clz-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 10px 24px;
+	border-radius: 2px;
+	font-family: var(--clz-font-body);
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 120%;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
+}
+
+.clz-btn:hover {
+	transform: scale(1.05);
+}
+
+.clz-btn--orange {
+	background-color: var(--clz-orange);
+	color: var(--clz-white);
+}
+
+.clz-btn--orange:hover {
+	background-color: var(--clz-orange-3);
+}
+
+.clz-btn--ghost {
+	background-color: transparent;
+	color: var(--clz-white);
+	border: 1px solid var(--clz-white);
+}
+
+/* --------------------------------------------------------------------------
+   6. Archive header
+   -------------------------------------------------------------------------- */
+
+.clz-archive-head {
+	text-align: center;
+	margin-bottom: 40px;
+}
+
+.clz-archive-title {
+	margin: 0 0 12px;
+	color: var(--clz-indigo-2);
+	font-family: var(--clz-font-hero);
+	font-size: 44px;
+	font-weight: 700;
+	line-height: 125%;
+	letter-spacing: -0.02em;
+}
+
+.clz-archive-desc {
+	margin: 0 auto;
+	max-width: 640px;
+	color: var(--clz-muted);
+	font-size: 16px;
+	line-height: 150%;
 }
 
 /* --------------------------------------------------------------------------
    7. Single post
    -------------------------------------------------------------------------- */
 
+.clz-single-section {
+	background-color: var(--clz-white);
+	padding-top: 64px;
+	padding-bottom: 80px;
+}
+
 .clz-single {
-	max-width: 820px;
+	max-width: 760px;
 	margin: 0 auto;
 }
 
 .clz-back {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	margin-bottom: 34px;
-	font-size: 14.5px;
+	display: inline-block;
+	color: var(--clz-teal);
+	font-family: var(--clz-font-body);
+	font-size: 16px;
 	font-weight: 600;
-	color: var(--clz-body);
-	transition: color 0.2s ease, transform 0.2s ease;
+	line-height: 150%;
+	margin-bottom: 32px;
+	letter-spacing: -0.01em;
+	transition: color 0.2s ease;
 }
 
 .clz-back:hover {
-	color: var(--clz-accent-2);
-	transform: translateX(-3px);
+	color: var(--clz-indigo);
 }
 
 .clz-post-head {
-	margin-bottom: 36px;
+	margin-bottom: 40px;
 }
 
 .clz-post-tags {
-	margin-bottom: 20px;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 22px;
 }
 
 .clz-post-title {
-	margin: 0 0 22px;
+	margin: 0 0 24px;
+	color: var(--clz-indigo);
 	font-family: var(--clz-font-head);
-	font-size: clamp(30px, 5vw, 52px);
+	font-size: clamp(30px, 4.4vw, 46px);
 	font-weight: 700;
-	line-height: 1.08;
-	letter-spacing: -0.025em;
-	color: var(--clz-ink);
+	line-height: 115%;
+	letter-spacing: -0.02em;
 }
 
 .clz-post-meta {
@@ -483,8 +687,9 @@ body.single-post #content > .corp-container {
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 12px;
+	color: var(--clz-muted);
 	font-size: 15px;
-	color: var(--clz-body);
+	line-height: 22px;
 }
 
 .clz-post-meta .clz-avatar {
@@ -493,7 +698,7 @@ body.single-post #content > .corp-container {
 }
 
 .clz-post-meta-sep {
-	color: var(--clz-muted);
+	color: var(--clz-faint);
 }
 
 .clz-post-featured {
@@ -504,106 +709,129 @@ body.single-post #content > .corp-container {
 	display: block;
 	width: 100%;
 	height: auto;
-	max-height: 520px;
-	object-fit: cover;
 	border-radius: var(--clz-radius);
-	box-shadow: var(--clz-shadow-lg);
 }
 
 .clz-post-content {
-	font-size: 17px;
-	line-height: 1.85;
-	color: #3c3d55;
+	color: var(--clz-text);
+	font-family: var(--clz-font-body);
+	font-size: 18px;
+	line-height: 150%;
 }
 
-.clz-post-content > * + * {
-	margin-top: 1.4em;
+.clz-post-content p {
+	margin: 0 0 24px;
 }
 
-.clz-post-content h2,
-.clz-post-content h3,
-.clz-post-content h4 {
+.clz-post-content h2 {
+	color: var(--clz-indigo);
 	font-family: var(--clz-font-head);
-	color: var(--clz-ink);
+	font-size: 32px;
+	font-weight: 700;
+	line-height: 120%;
+	margin: 40px 0 24px;
 	letter-spacing: -0.01em;
-	line-height: 1.25;
-	margin-top: 1.8em;
 }
 
-.clz-post-content h2 { font-size: 28px; font-weight: 700; }
-.clz-post-content h3 { font-size: 22px; font-weight: 600; }
-.clz-post-content h4 { font-size: 18px; font-weight: 600; }
+.clz-post-content h3 {
+	color: var(--clz-text);
+	font-family: var(--clz-font-head);
+	font-size: 22px;
+	font-weight: 500;
+	line-height: 120%;
+	margin: 40px 0 24px;
+}
+
+.clz-post-content h4 {
+	color: var(--clz-indigo);
+	font-family: var(--clz-font-head);
+	font-size: 18px;
+	font-weight: 700;
+	margin: 28px 0 8px;
+}
 
 .clz-post-content a {
-	color: var(--clz-accent-2);
+	color: var(--clz-black);
 	text-decoration: underline;
-	text-underline-offset: 3px;
 }
 
 .clz-post-content a:hover {
-	color: var(--clz-accent);
+	color: var(--clz-purple);
 }
 
-.clz-post-content img {
-	max-width: 100%;
-	height: auto;
-	border-radius: var(--clz-radius-sm);
+.clz-post-content blockquote,
+.clz-post-content .wp-block-quote {
+	color: var(--clz-indigo);
+	border-left: 4px solid var(--clz-orange);
+	margin: 24px 0;
+	padding: 0 0 0 16px;
+	font-weight: 600;
 }
 
-.clz-post-content blockquote {
-	margin: 1.8em 0;
-	padding: 4px 0 4px 24px;
-	border-left: 3px solid var(--clz-accent);
-	font-family: var(--clz-font-head);
-	font-size: 20px;
-	font-weight: 500;
-	line-height: 1.5;
-	color: var(--clz-ink);
+.clz-post-content blockquote p {
+	color: var(--clz-indigo);
 }
 
 .clz-post-content ul,
 .clz-post-content ol {
-	padding-left: 1.4em;
-}
-
-.clz-post-content li + li {
-	margin-top: 0.4em;
-}
-
-.clz-post-content .wp-block-quote {
-	border-left: 3px solid var(--clz-accent);
 	padding-left: 24px;
+	margin: 12px 0 24px;
+	font-size: 18px;
+	line-height: 26px;
+}
+
+.clz-post-content li {
+	margin-bottom: 6px;
+}
+
+.clz-post-content figure,
+.clz-post-content img {
+	max-width: 100%;
+	height: auto;
+	border-radius: var(--clz-radius);
+	margin-top: 40px;
+	margin-bottom: 40px;
+}
+
+.clz-post-content figcaption {
+	color: var(--clz-text);
+	font-size: 14px;
+	line-height: 22px;
+	margin-top: 8px;
 }
 
 /* --------------------------------------------------------------------------
-   8. Related articles
+   8. Related posts
    -------------------------------------------------------------------------- */
 
-.clz-related {
-	margin-top: 64px;
-	padding-top: 48px;
-	border-top: 1px solid var(--clz-line);
+.clz-related-section {
+	background-color: var(--clz-gray-bg);
+	padding-top: 72px;
+	padding-bottom: 72px;
 }
 
 .clz-related-title {
-	margin: 0 0 28px;
+	margin: 0 0 32px;
+	color: var(--clz-indigo);
 	font-family: var(--clz-font-head);
-	font-size: 26px;
+	font-size: 30px;
 	font-weight: 700;
+	line-height: 120%;
 	letter-spacing: -0.01em;
-	color: var(--clz-ink);
+	text-align: center;
 }
 
 .clz-grid--related {
 	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 48px;
 }
 
 /* --------------------------------------------------------------------------
-   9. Post navigation, author box, comments (generic restyle)
+   9. Post navigation / author box / comments (gentle restyle)
    -------------------------------------------------------------------------- */
 
 .clz-single .post-navigation {
-	margin: 48px 0 0;
+	margin-top: 56px;
 }
 
 .clz-single .nav-links {
@@ -613,19 +841,18 @@ body.single-post #content > .corp-container {
 }
 
 .clz-single .nav-links a {
+	color: var(--clz-indigo);
 	font-weight: 600;
-	color: var(--clz-ink);
 }
 
 .clz-single .nav-links a:hover {
-	color: var(--clz-accent-2);
+	color: var(--clz-purple);
 }
 
 .clz-single .author-box {
-	margin-top: 48px;
+	margin-top: 56px;
 	padding: 28px;
-	background: var(--clz-surface);
-	border: 1px solid var(--clz-line);
+	background: var(--clz-card-bg);
 	border-radius: var(--clz-radius);
 }
 
@@ -640,114 +867,89 @@ body.single-post #content > .corp-container {
 .clz-single .comments-area .comment-reply-title,
 .clz-single .comments-area .comments-title {
 	font-family: var(--clz-font-head);
-	color: var(--clz-ink);
+	color: var(--clz-indigo);
 }
 
 /* --------------------------------------------------------------------------
-   10. Placeholder (posts without a featured image)
-   -------------------------------------------------------------------------- */
-
-.clz-ph {
-	display: block;
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	background:
-		radial-gradient(120% 120% at 20% 10%, rgba(255, 119, 72, 0.28), transparent 45%),
-		radial-gradient(120% 120% at 90% 90%, rgba(26, 26, 122, 0.35), transparent 50%),
-		linear-gradient(135deg, #0f1136 0%, #000060 55%, #1a1a7a 100%);
-}
-
-.clz-ph::after {
-	content: "";
-	position: absolute;
-	inset: 0;
-	margin: auto;
-	width: 54px;
-	height: 54px;
-	border-radius: 14px;
-	background: rgba(255, 255, 255, 0.14);
-	-webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'><rect x='3' y='3' width='18' height='18' rx='4'/><circle cx='9' cy='9' r='2'/><path d='M21 15l-5-5L5 21'/></svg>") center / contain no-repeat;
-	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'><rect x='3' y='3' width='18' height='18' rx='4'/><circle cx='9' cy='9' r='2'/><path d='M21 15l-5-5L5 21'/></svg>") center / contain no-repeat;
-}
-
-/* --------------------------------------------------------------------------
-   11. Responsive
+   10. Responsive
    -------------------------------------------------------------------------- */
 
 @media (max-width: 1024px) {
 	.clz-grid,
 	.clz-grid--related {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 32px;
 	}
 
-	.clz-hero {
+	.clz-featured {
 		grid-template-columns: 1fr;
-		gap: 28px;
-		padding: 36px;
 	}
 
-	.clz-hero-media {
-		order: -1;
-		aspect-ratio: 16 / 9;
+	.clz-featured-body {
+		order: 1;
+	}
+
+	.clz-featured-media {
+		min-height: 260px;
+		order: 0;
 	}
 }
 
 @media (max-width: 640px) {
-	.clz-blog,
-	.clz-single {
-		padding: 40px 18px 56px;
+	.clz-container {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.clz-sechead {
+		padding-top: 80px;
+		padding-bottom: 60px;
+	}
+
+	.clz-blog-title,
+	.clz-archive-title {
+		font-size: 32px;
 	}
 
 	.clz-grid,
 	.clz-grid--related {
 		grid-template-columns: 1fr;
+		gap: 24px;
 	}
 
-	.clz-hero {
-		padding: 22px;
-		margin-bottom: 40px;
-		border-radius: 20px;
+	.clz-featured-body {
+		padding: 24px;
 	}
 
-	.clz-hero-title {
-		font-size: 26px;
+	.clz-featured-media {
+		min-height: 220px;
 	}
 
-	.clz-card-title {
-		font-size: 18px;
+	.clz-card-media {
+		height: 200px;
 	}
 
 	.clz-filters {
-		gap: 8px;
-	}
-
-	.clz-filter {
-		padding: 8px 16px;
-		font-size: 13px;
+		border-radius: 24px;
+		gap: 2px 20px;
+		padding: 14px 18px;
 	}
 
 	.clz-post-content {
 		font-size: 16px;
 	}
 
-	.clz-single .nav-links {
-		flex-direction: column;
+	.clz-post-content h2 {
+		font-size: 26px;
 	}
 }
 
-/* --------------------------------------------------------------------------
-   12. Motion preferences
-   -------------------------------------------------------------------------- */
-
 @media (prefers-reduced-motion: reduce) {
-	.clz-hero,
 	.clz-card,
-	.clz-hero-media img,
 	.clz-card-media img,
-	.clz-back,
 	.clz-filter,
+	.clz-btn,
+	.clz-back,
 	[data-aos] {
 		transition: none !important;
 		transform: none !important;

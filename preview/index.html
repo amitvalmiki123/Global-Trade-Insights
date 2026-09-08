@@ -6,188 +6,209 @@
 <title>Blog — Clazar-style design preview</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@600;700&family=Red+Hat+Display:wght@500;600;700&family=Red+Hat+Text:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../siteorigin-corp-child/style.css">
 <style>
-  /* Minimal demo shell (only for preview context — not part of the theme) */
   body { margin: 0; background: #fff; }
+  /* Demo shell — not part of the theme */
   .demo-nav {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 18px 40px; border-bottom: 1px solid #eef0f6;
+    padding: 14px 40px; background: #fff;
+    box-shadow: 0 2px 12px rgba(33,37,41,.08);
+    position: sticky; top: 0; z-index: 50;
   }
-  .demo-logo { font-family: Outfit, sans-serif; font-weight: 800; font-size: 22px; color: #0f1136; }
-  .demo-logo span { color: #ff7748; }
+  .demo-logo { font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 20px; color: #000060; }
   .demo-nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
-  .demo-nav a { color: #565874; text-decoration: none; font: 600 14px Inter, sans-serif; }
-  .demo-cta {
-    background: #ff7748; color: #fff !important; padding: 10px 20px; border-radius: 999px;
-    font: 600 14px Inter, sans-serif; text-decoration: none;
-  }
-  .demo-note {
-    margin: 18px 40px 0; padding: 12px 16px; background: #fff1ec; color: #b33c16;
-    border: 1px solid #ffd9cc; border-radius: 12px; font: 500 13px Inter, sans-serif;
-  }
+  .demo-nav a { color: #4a5158; text-decoration: none; font: 500 14px 'Red Hat Text', sans-serif; text-transform: uppercase; letter-spacing: .04em; }
+  .demo-login { color:#333; border:1px solid #ff7748; border-radius:2px; padding:8px 16px; font:600 16px 'Red Hat Text',sans-serif; text-transform:uppercase; }
+  .demo-cta { background:#ff7748; color:#fff; border-radius:2px; padding:8px 24px; font:600 16px 'Red Hat Text',sans-serif; text-transform:uppercase; letter-spacing:.02em; }
+  .demo-note { margin: 18px 40px 0; padding: 12px 16px; background:#fde9e2; color:#e6673e; border-radius:8px; font:600 13px 'Red Hat Text',sans-serif; }
 </style>
 </head>
 <body>
   <nav class="demo-nav">
-    <div class="demo-logo">Logo<span>.</span></div>
+    <div class="demo-logo">Global Trade Insights</div>
     <ul>
       <li><a href="#">Home</a></li>
       <li><a href="#">Platform</a></li>
       <li><a href="#">Solutions</a></li>
       <li><a href="#">Pricing</a></li>
-      <li><a href="#" style="color:#0f1136">Blog</a></li>
+      <li><a href="#" style="color:#040070">Blog</a></li>
     </ul>
-    <a class="demo-cta" href="#">Get a demo</a>
+    <span style="display:flex;gap:12px;align-items:center;">
+      <a class="demo-login" href="#">Log in</a>
+      <a class="demo-cta" href="#">Get a demo</a>
+    </span>
   </nav>
 
   <div class="demo-note">
-    ⚠️ Static preview of the <strong>child-theme blog design</strong> (mirrors the PHP template markup). Featured images shown are from the reference site only as placeholders.
+    ⚠️ Static preview of the updated child-theme blog design (mirrors the PHP template markup). Images are placeholders from the reference site.
   </div>
 
   <div class="clz-blog">
-    <h1 class="screen-reader-text">Blog</h1>
-
-    <!-- Featured hero (latest post) -->
-    <section class="clz-hero">
-      <div class="clz-hero-body">
-        <span class="clz-kicker">2 min read</span>
-        <h2 class="clz-hero-title"><a href="single.html">How to Integrate Your CRM with Cloud Marketplaces (AWS, Microsoft and Google Cloud)</a></h2>
-        <div class="clz-hero-author">
-          <span class="clz-author">
-            <img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c61190384f9b9dbf8b2c8_Lalit%20Aggarwal.png" alt="">
-            <span class="clz-author-name">Lalit Aggarwal</span>
-          </span>
-          <span class="clz-hero-sep">·</span>
-          <span class="clz-hero-date">September 7, 2026</span>
-        </div>
-        <p class="clz-hero-excerpt">Learn how to connect your CRM with AWS, Microsoft and Google Cloud marketplaces to automate deals, sync buyers and unlock faster co-sell revenue.</p>
-        <div class="clz-hero-tags">
-          <a class="clz-tag" href="#">AWS</a>
-          <a class="clz-tag" href="#">GCP</a>
-          <a class="clz-tag" href="#">Cloud marketplaces</a>
+    <!-- 1. Section head (lavender) -->
+    <section class="clz-sechead" style="padding-top:72px;padding-bottom:64px;">
+      <div class="clz-container">
+        <div class="clz-sechead-inner">
+          <span class="clz-kicker">Blog</span>
+          <h1 class="clz-blog-title">Navigating Global Trade with Expert Insights</h1>
+          <p class="clz-blog-subtitle">Deep dives, product updates and practical guides for scaling revenue on cloud marketplaces.</p>
         </div>
       </div>
-      <a class="clz-hero-media" href="single.html" aria-hidden="true" tabindex="-1">
-        <img class="clz-media-img" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a9ec30537913f126d8514f0_Blog%20banner%202.png" alt="">
-      </a>
     </section>
 
-    <!-- Category filters -->
-    <nav class="clz-filters">
-      <a class="clz-filter is-active" href="#">All</a>
-      <a class="clz-filter" href="#">Product</a>
-      <a class="clz-filter" href="#">Clazar philosophy</a>
-      <a class="clz-filter" href="#">GCP</a>
-      <a class="clz-filter" href="#">Cloud GTM</a>
-      <a class="clz-filter" href="#">Cloud marketplaces</a>
-      <a class="clz-filter" href="#">Co-Sell</a>
-      <a class="clz-filter" href="#">Hyperscalers</a>
-      <a class="clz-filter" href="#">Announcements</a>
-      <a class="clz-filter" href="#">Listing</a>
-    </nav>
-
-    <!-- Card grid -->
-    <div class="clz-grid">
-      <article class="clz-card">
-        <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
-          <img class="clz-media-img" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a918db7ce9593ca2dbb8c24_Google%20Cloud%20Marketplace%20Fee.png" alt="">
-        </a>
-        <div class="clz-card-body">
-          <div class="clz-card-meta"><span class="clz-card-date">August 28, 2026</span><span class="clz-card-dot">·</span><span class="clz-card-read">2 min read</span></div>
-          <h3 class="clz-card-title"><a href="single.html">Google Cloud Marketplace Fees in 2026: Rates by Offer Type</a></h3>
-          <div class="clz-card-foot">
-            <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c64f26bb48ff7e44807dc_Siddhartha%20Jain.png" alt=""><span class="clz-author-name">Siddhartha Jain</span></span>
+    <!-- 2. Featured post (horizontal card) -->
+    <section class="clz-featured-section">
+      <div class="clz-container">
+        <article class="clz-featured">
+          <div class="clz-featured-body">
+            <span class="clz-featured-read">2 min read</span>
+            <h2 class="clz-featured-title"><a href="single.html">How to Integrate Your CRM with Cloud Marketplaces (AWS, Microsoft and Google Cloud)</a></h2>
+            <p class="clz-featured-excerpt">Learn how to connect your CRM with AWS, Microsoft and Google Cloud marketplaces to automate deals, sync buyers and unlock faster co-sell revenue.</p>
+            <div class="clz-featured-meta">
+              <span class="clz-author">
+                <img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c61190384f9b9dbf8b2c8_Lalit%20Aggarwal.png" alt="">
+                <span class="clz-author-name">Lalit Aggarwal</span>
+              </span>
+              <span class="clz-post-meta-sep">·</span>
+              <span>September 7, 2026</span>
+            </div>
           </div>
-          <div class="clz-card-tags"><a class="clz-tag" href="#">GCP</a><a class="clz-tag" href="#">Hyperscalers</a></div>
-        </div>
-      </article>
+          <a class="clz-featured-media" href="single.html" aria-hidden="true" tabindex="-1">
+            <img src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a9ec30537913f126d8514f0_Blog%20banner%202.png" alt="">
+          </a>
+        </article>
+      </div>
+    </section>
 
-      <article class="clz-card">
-        <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
-          <img class="clz-media-img" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a8847e47d1f93774d24f632_clazar-mcp-server-banner.png" alt="">
-        </a>
-        <div class="clz-card-body">
-          <div class="clz-card-meta"><span class="clz-card-date">August 21, 2026</span><span class="clz-card-dot">·</span><span class="clz-card-read">1 min read</span></div>
-          <h3 class="clz-card-title"><a href="single.html">Clazar MCP Server: Query Your Cloud Partnerships Data Wherever You Work</a></h3>
-          <div class="clz-card-foot">
-            <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c61190384f9b9dbf8b2c8_Lalit%20Aggarwal.png" alt=""><span class="clz-author-name">Lalit Aggarwal</span></span>
+    <!-- 3. Cards section (light lavender) -->
+    <section class="clz-cards-section">
+      <div class="clz-container">
+        <nav class="clz-filters">
+          <a class="clz-filter is-active" href="#">All</a>
+          <a class="clz-filter" href="#">Product</a>
+          <a class="clz-filter" href="#">Cloud GTM</a>
+          <a class="clz-filter" href="#">Cloud marketplaces</a>
+          <a class="clz-filter" href="#">Co-Sell</a>
+          <a class="clz-filter" href="#">Hyperscalers</a>
+          <a class="clz-filter" href="#">GCP</a>
+          <a class="clz-filter" href="#">AWS</a>
+          <a class="clz-filter" href="#">Announcements</a>
+        </nav>
+
+        <div class="clz-grid">
+          <article class="clz-card">
+            <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
+              <img src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a918db7ce9593ca2dbb8c24_Google%20Cloud%20Marketplace%20Fee.png" alt="">
+            </a>
+            <div class="clz-card-body">
+              <div class="clz-card-meta"><span>August 28, 2026</span><span class="clz-card-read">2 min read</span></div>
+              <h3 class="clz-card-title"><a href="single.html">Google Cloud Marketplace Fees in 2026: Rates by Offer Type</a></h3>
+              <div class="clz-card-foot">
+                <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c64f26bb48ff7e44807dc_Siddhartha%20Jain.png" alt=""><span class="clz-author-name">Siddhartha Jain</span></span>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">GCP</a></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="clz-card">
+            <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
+              <img src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a8847e47d1f93774d24f632_clazar-mcp-server-banner.png" alt="">
+            </a>
+            <div class="clz-card-body">
+              <div class="clz-card-meta"><span>August 21, 2026</span><span class="clz-card-read">1 min read</span></div>
+              <h3 class="clz-card-title"><a href="single.html">Clazar MCP Server: Query Your Cloud Partnerships Data Wherever You Work</a></h3>
+              <div class="clz-card-foot">
+                <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c61190384f9b9dbf8b2c8_Lalit%20Aggarwal.png" alt=""><span class="clz-author-name">Lalit Aggarwal</span></span>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">Cloud marketplaces</a></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="clz-card">
+            <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
+              <img src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7b4bfbd7aebc3b820f2a26_AWS%20Marketplace%20%20Fees%20Explained.png" alt="">
+            </a>
+            <div class="clz-card-body">
+              <div class="clz-card-meta"><span>August 11, 2026</span><span class="clz-card-read">2 min read</span></div>
+              <h3 class="clz-card-title"><a href="single.html">AWS Marketplace Fees in 2026: Private Offers, CPPO Uplift, and More</a></h3>
+              <div class="clz-card-foot">
+                <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c61190384f9b9dbf8b2c8_Lalit%20Aggarwal.png" alt=""><span class="clz-author-name">Lalit Aggarwal</span></span>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">AWS</a></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="clz-card">
+            <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
+              <img src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/698da419260b9947634a6e87_Azure%20Co-Sell%20vs.%20IP%20Co-Sell%20Eligible_%20The%20Complete%20Guide%20for%20ISVs.png" alt="">
+            </a>
+            <div class="clz-card-body">
+              <div class="clz-card-meta"><span>February 12, 2026</span><span class="clz-card-read">2 min read</span></div>
+              <h3 class="clz-card-title"><a href="single.html">Azure Co-Sell vs. IP Co-Sell Eligible: The Complete Guide for ISVs</a></h3>
+              <div class="clz-card-foot">
+                <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/67076a7bd09c5b388b7690b4_Mani.jpg" alt=""><span class="clz-author-name">Mani Makkar</span></span>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">Co-Sell</a></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="clz-card">
+            <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
+              <img src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/695e098f845c8973a20b6f30_December%202025%20Product%20Release.png" alt="">
+            </a>
+            <div class="clz-card-body">
+              <div class="clz-card-meta"><span>January 7, 2026</span><span class="clz-card-read">4 min read</span></div>
+              <h3 class="clz-card-title"><a href="single.html">December 2025 Product Release: Custom roles, GCP VM deals, and a faster co-sell experience</a></h3>
+              <div class="clz-card-foot">
+                <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/67076a7bd09c5b388b7690b4_Mani.jpg" alt=""><span class="clz-author-name">Mani Makkar</span></span>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">Product</a></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="clz-card">
+            <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
+              <img src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/692dd78427c1b3f7be88c897_What%20Is%20Changing%20and%20How%20Clazar%20Helps%20You%20Migrate%20for%20Free.jpg" alt="">
+            </a>
+            <div class="clz-card-body">
+              <div class="clz-card-meta"><span>December 1, 2025</span><span class="clz-card-read">3 min read</span></div>
+              <h3 class="clz-card-title"><a href="single.html">The new AWS partner central experience: what's changing</a></h3>
+              <div class="clz-card-foot">
+                <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/67076a7bd09c5b388b7690b4_Mani.jpg" alt=""><span class="clz-author-name">Mani Makkar</span></span>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">Cloud GTM</a></div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="clz-pagination">
+          <nav class="navigation pagination">
+            <div class="nav-links">
+              <span aria-current="page" class="page-numbers current">1</span>
+              <a class="page-numbers" href="#">2</a>
+              <a class="page-numbers" href="#">3</a>
+              <span class="page-numbers dots">…</span>
+              <a class="page-numbers" href="#">8</a>
+              <a class="next page-numbers" href="#">View more</a>
+            </div>
+          </nav>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Purple CTA -->
+    <section class="clz-cta">
+      <div class="clz-container">
+        <div class="clz-cta-inner">
+          <h2 class="clz-cta-title">Get the latest insights in your inbox</h2>
+          <div class="clz-cta-actions">
+            <a class="clz-btn clz-btn--orange" href="#">Get started</a>
+            <a class="clz-btn clz-btn--ghost" href="#">See all articles</a>
           </div>
-          <div class="clz-card-tags"><a class="clz-tag" href="#">Cloud marketplaces</a><a class="clz-tag" href="#">AWS</a></div>
         </div>
-      </article>
-
-      <article class="clz-card">
-        <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
-          <img class="clz-media-img" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7b4bfbd7aebc3b820f2a26_AWS%20Marketplace%20%20Fees%20Explained.png" alt="">
-        </a>
-        <div class="clz-card-body">
-          <div class="clz-card-meta"><span class="clz-card-date">August 11, 2026</span><span class="clz-card-dot">·</span><span class="clz-card-read">2 min read</span></div>
-          <h3 class="clz-card-title"><a href="single.html">AWS Marketplace Fees in 2026: Private Offers, CPPO Uplift, and More</a></h3>
-          <div class="clz-card-foot">
-            <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c61190384f9b9dbf8b2c8_Lalit%20Aggarwal.png" alt=""><span class="clz-author-name">Lalit Aggarwal</span></span>
-          </div>
-          <div class="clz-card-tags"><a class="clz-tag" href="#">AWS</a><a class="clz-tag" href="#">Listing</a></div>
-        </div>
-      </article>
-
-      <article class="clz-card">
-        <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
-          <img class="clz-media-img" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/698da419260b9947634a6e87_Azure%20Co-Sell%20vs.%20IP%20Co-Sell%20Eligible_%20The%20Complete%20Guide%20for%20ISVs.png" alt="">
-        </a>
-        <div class="clz-card-body">
-          <div class="clz-card-meta"><span class="clz-card-date">February 12, 2026</span><span class="clz-card-dot">·</span><span class="clz-card-read">2 min read</span></div>
-          <h3 class="clz-card-title"><a href="single.html">Azure Co-Sell vs. IP Co-Sell Eligible: The Complete Guide for ISVs</a></h3>
-          <div class="clz-card-foot">
-            <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/67076a7bd09c5b388b7690b4_Mani.jpg" alt=""><span class="clz-author-name">Mani Makkar</span></span>
-          </div>
-          <div class="clz-card-tags"><a class="clz-tag" href="#">Co-Sell</a><a class="clz-tag" href="#">Clazar philosophy</a></div>
-        </div>
-      </article>
-
-      <article class="clz-card">
-        <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
-          <img class="clz-media-img" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/695e098f845c8973a20b6f30_December%202025%20Product%20Release.png" alt="">
-        </a>
-        <div class="clz-card-body">
-          <div class="clz-card-meta"><span class="clz-card-date">January 7, 2026</span><span class="clz-card-dot">·</span><span class="clz-card-read">4 min read</span></div>
-          <h3 class="clz-card-title"><a href="single.html">December 2025 Product Release: Custom roles, GCP VM deals, and a faster co-sell experience</a></h3>
-          <div class="clz-card-foot">
-            <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/67076a7bd09c5b388b7690b4_Mani.jpg" alt=""><span class="clz-author-name">Mani Makkar</span></span>
-          </div>
-          <div class="clz-card-tags"><a class="clz-tag" href="#">AWS</a><a class="clz-tag" href="#">Product</a></div>
-        </div>
-      </article>
-
-      <article class="clz-card">
-        <a class="clz-card-media" href="single.html" aria-hidden="true" tabindex="-1">
-          <img class="clz-media-img" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a918db7ce9593ca2dbb8c24_Google%20Cloud%20Marketplace%20Fee.png" alt="">
-        </a>
-        <div class="clz-card-body">
-          <div class="clz-card-meta"><span class="clz-card-date">September 5, 2026</span><span class="clz-card-dot">·</span><span class="clz-card-read">5 min read</span></div>
-          <h3 class="clz-card-title"><a href="single.html">How to register as a seller on AWS Marketplace</a></h3>
-          <div class="clz-card-foot">
-            <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6604346f2a0cc676d642db4c_Mask%20group%20(3).png" alt=""><span class="clz-author-name">Aakash Sinha</span></span>
-          </div>
-          <div class="clz-card-tags"><a class="clz-tag" href="#">Cloud GTM</a><a class="clz-tag" href="#">Listing</a></div>
-        </div>
-      </article>
-    </div>
-
-    <!-- Pagination -->
-    <div class="clz-pagination">
-      <nav class="navigation pagination">
-        <div class="nav-links">
-          <span aria-current="page" class="page-numbers current">1</span>
-          <a class="page-numbers" href="#">2</a>
-          <a class="page-numbers" href="#">3</a>
-          <span class="page-numbers dots">…</span>
-          <a class="page-numbers" href="#">8</a>
-          <a class="next page-numbers" href="#">Next →</a>
-        </div>
-      </nav>
-    </div>
+      </div>
+    </section>
   </div>
 </body>
 </html>
