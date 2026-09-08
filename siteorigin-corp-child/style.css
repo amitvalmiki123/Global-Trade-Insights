@@ -1,0 +1,755 @@
+/*
+Theme Name: SiteOrigin Corp Child
+Theme URI: https://siteorigin.com/theme/corp/
+Template: siteorigin-corp
+Author: SiteOrigin
+Author URI: https://siteorigin.com/
+Description: A modern business theme from SiteOrigin. Corp is versatile and quick to customize. Fast loading and fully stocked with all the modern theme features you've come to expect and enjoy. Convert visitors to customers with effective layouts and beautifuly presented landing pages. Corp offers seamless integration with Page Builder by SiteOrigin, a custom WooCommerce design, five unique blog layouts and a stunning Jetpack Portfolio layout.
+Tags: one-column,two-columns,left-sidebar,right-sidebar,grid-layout,custom-background,custom-colors,custom-menu,custom-logo,featured-images,footer-widgets,full-width-template,post-formats,rtl-language-support,sticky-post,theme-options,threaded-comments,translation-ready,blog,e-commerce
+Version: 1.21.0
+Updated: 2026-09-08
+
+*/
+
+/* ==========================================================================
+   Clazar-style blog design — SiteOrigin Corp child theme
+   Layout, colors & card sizing modelled on clazar.io/blog
+   ========================================================================== */
+
+:root {
+	--clz-navy:        #000060;
+	--clz-navy-soft:   #1a1a7a;
+	--clz-ink:         #0f1136;
+	--clz-body:        #565874;
+	--clz-muted:       #9496ad;
+	--clz-accent:      #ff7748;
+	--clz-accent-2:    #f0562e;
+	--clz-accent-soft: #fff1ec;
+	--clz-line:        #e9eaf5;
+	--clz-surface:     #f6f7fc;
+	--clz-white:       #ffffff;
+	--clz-radius:      18px;
+	--clz-radius-sm:   12px;
+	--clz-shadow:      0 10px 30px -12px rgba(15, 17, 54, 0.14);
+	--clz-shadow-lg:   0 24px 60px -20px rgba(15, 17, 54, 0.28);
+	--clz-font-head:   "Outfit", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	--clz-font-body:   "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* --------------------------------------------------------------------------
+   1. Full-width blog area (Clazar blog has no sidebar)
+   -------------------------------------------------------------------------- */
+
+body.blog .content-area,
+body.archive .content-area,
+body.single-post .content-area,
+body.blog .site-main,
+body.archive .site-main,
+body.single-post .site-main {
+	width: 100% !important;
+	max-width: 100% !important;
+	float: none !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+}
+
+body.blog #content > .corp-container,
+body.archive #content > .corp-container,
+body.single-post #content > .corp-container {
+	max-width: 1220px;
+}
+
+.clz-blog,
+.clz-single {
+	font-family: var(--clz-font-body);
+	color: var(--clz-body);
+	-webkit-font-smoothing: antialiased;
+	padding: 64px 24px 80px;
+}
+
+.clz-blog a,
+.clz-single a {
+	text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   2. Featured hero (latest post)
+   -------------------------------------------------------------------------- */
+
+.clz-hero {
+	display: grid;
+	grid-template-columns: minmax(0, 5fr) minmax(0, 6fr);
+	gap: 48px;
+	align-items: center;
+	padding: 48px;
+	background: var(--clz-surface);
+	border: 1px solid var(--clz-line);
+	border-radius: 28px;
+	margin-bottom: 56px;
+}
+
+.clz-hero-body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 18px;
+}
+
+.clz-kicker {
+	display: inline-flex;
+	align-items: center;
+	padding: 7px 14px;
+	font-size: 12.5px;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	color: var(--clz-accent-2);
+	background: var(--clz-accent-soft);
+	border-radius: 999px;
+}
+
+.clz-hero-title {
+	margin: 0;
+	font-family: var(--clz-font-head);
+	font-size: clamp(26px, 3.4vw, 40px);
+	font-weight: 700;
+	line-height: 1.12;
+	letter-spacing: -0.02em;
+}
+
+.clz-hero-title a {
+	color: var(--clz-ink);
+	background-image: linear-gradient(var(--clz-accent), var(--clz-accent));
+	background-repeat: no-repeat;
+	background-size: 0% 3px;
+	background-position: 0 100%;
+	transition: background-size 0.35s ease, color 0.25s ease;
+}
+
+.clz-hero-title a:hover {
+	color: var(--clz-ink);
+	background-size: 100% 3px;
+}
+
+.clz-hero-author {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	font-size: 15px;
+	color: var(--clz-body);
+}
+
+.clz-hero-sep {
+	color: var(--clz-muted);
+}
+
+.clz-hero-excerpt {
+	margin: 0;
+	font-size: 16px;
+	line-height: 1.7;
+	color: var(--clz-body);
+}
+
+.clz-hero-tags,
+.clz-card-tags,
+.clz-post-tags {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.clz-hero-media {
+	display: block;
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 10;
+	border-radius: var(--clz-radius);
+	overflow: hidden;
+	box-shadow: var(--clz-shadow-lg);
+}
+
+.clz-hero-media img,
+.clz-hero-media .clz-media-img {
+	transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.clz-hero:hover .clz-hero-media img {
+	transform: scale(1.04);
+}
+
+/* --------------------------------------------------------------------------
+   3. Category filter pills
+   -------------------------------------------------------------------------- */
+
+.clz-filters {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	margin-bottom: 40px;
+}
+
+.clz-filter {
+	display: inline-flex;
+	align-items: center;
+	padding: 10px 20px;
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--clz-body);
+	background: var(--clz-surface);
+	border: 1px solid var(--clz-line);
+	border-radius: 999px;
+	transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.clz-filter:hover {
+	color: var(--clz-ink);
+	border-color: #d7d9ea;
+	transform: translateY(-1px);
+}
+
+.clz-filter.is-active {
+	color: var(--clz-white);
+	background: var(--clz-navy);
+	border-color: var(--clz-navy);
+}
+
+/* --------------------------------------------------------------------------
+   4. Card grid
+   -------------------------------------------------------------------------- */
+
+.clz-grid {
+	display: grid;
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+	gap: 32px 28px;
+}
+
+.clz-card {
+	display: flex;
+	flex-direction: column;
+	background: var(--clz-white);
+	border: 1px solid var(--clz-line);
+	border-radius: var(--clz-radius);
+	overflow: hidden;
+	transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+.clz-card:hover {
+	transform: translateY(-6px);
+	box-shadow: var(--clz-shadow-lg);
+	border-color: transparent;
+}
+
+.clz-card-media {
+	display: block;
+	position: relative;
+	width: 100%;
+	aspect-ratio: 16 / 9;
+	overflow: hidden;
+	background: var(--clz-surface);
+}
+
+.clz-media-img,
+.clz-card-media img {
+	display: block;
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.clz-card:hover .clz-card-media img {
+	transform: scale(1.05);
+}
+
+.clz-card-body {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	gap: 14px;
+	padding: 22px 22px 24px;
+	flex: 1;
+}
+
+.clz-card-meta {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 13px;
+	font-weight: 500;
+	color: var(--clz-muted);
+}
+
+.clz-card-dot {
+	color: var(--clz-accent);
+}
+
+.clz-card-title {
+	margin: 0;
+	font-family: var(--clz-font-head);
+	font-size: 19px;
+	font-weight: 600;
+	line-height: 1.3;
+	letter-spacing: -0.01em;
+}
+
+.clz-card-title a {
+	color: var(--clz-ink);
+	transition: color 0.2s ease;
+}
+
+.clz-card-title a:hover {
+	color: var(--clz-accent-2);
+}
+
+.clz-card-foot {
+	margin-top: auto;
+}
+
+.clz-card-tags {
+	margin-top: 2px;
+}
+
+/* Author row */
+
+.clz-author {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+}
+
+.clz-avatar {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	object-fit: cover;
+	border: 2px solid var(--clz-white);
+	box-shadow: 0 0 0 1.5px var(--clz-line);
+}
+
+.clz-hero-author .clz-avatar {
+	width: 40px;
+	height: 40px;
+}
+
+.clz-author-name {
+	font-size: 14px;
+	font-weight: 600;
+	color: var(--clz-ink);
+}
+
+/* Category tag pill */
+
+.clz-tag {
+	display: inline-flex;
+	align-items: center;
+	padding: 5px 12px;
+	font-size: 12.5px;
+	font-weight: 600;
+	color: var(--clz-accent-2);
+	background: var(--clz-accent-soft);
+	border-radius: 999px;
+	transition: background 0.2s ease, color 0.2s ease;
+}
+
+.clz-tag:hover {
+	background: var(--clz-accent);
+	color: var(--clz-white);
+}
+
+/* --------------------------------------------------------------------------
+   5. Archive header
+   -------------------------------------------------------------------------- */
+
+.clz-archive-head {
+	margin-bottom: 36px;
+}
+
+.clz-archive-title {
+	margin: 0 0 10px;
+	font-family: var(--clz-font-head);
+	font-size: clamp(30px, 4vw, 44px);
+	font-weight: 700;
+	line-height: 1.1;
+	letter-spacing: -0.02em;
+	color: var(--clz-ink);
+}
+
+.clz-archive-desc {
+	margin: 0;
+	max-width: 640px;
+	font-size: 16px;
+	line-height: 1.7;
+	color: var(--clz-body);
+}
+
+/* --------------------------------------------------------------------------
+   6. Pagination
+   -------------------------------------------------------------------------- */
+
+.clz-pagination {
+	margin-top: 56px;
+}
+
+.clz-pagination .nav-links {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+}
+
+.clz-pagination .page-numbers {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	min-width: 44px;
+	height: 44px;
+	padding: 0 16px;
+	font-size: 14.5px;
+	font-weight: 600;
+	color: var(--clz-body);
+	background: var(--clz-white);
+	border: 1px solid var(--clz-line);
+	border-radius: 12px;
+	transition: color 0.2s ease, background 0.2s ease, border-color 0.2s ease;
+}
+
+.clz-pagination .page-numbers:hover {
+	color: var(--clz-ink);
+	border-color: #d7d9ea;
+}
+
+.clz-pagination .page-numbers.current {
+	color: var(--clz-white);
+	background: var(--clz-navy);
+	border-color: var(--clz-navy);
+}
+
+.clz-pagination .page-numbers.dots {
+	border-color: transparent;
+	background: transparent;
+}
+
+.clz-empty {
+	padding: 48px 0;
+	font-size: 16px;
+}
+
+/* --------------------------------------------------------------------------
+   7. Single post
+   -------------------------------------------------------------------------- */
+
+.clz-single {
+	max-width: 820px;
+	margin: 0 auto;
+}
+
+.clz-back {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	margin-bottom: 34px;
+	font-size: 14.5px;
+	font-weight: 600;
+	color: var(--clz-body);
+	transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.clz-back:hover {
+	color: var(--clz-accent-2);
+	transform: translateX(-3px);
+}
+
+.clz-post-head {
+	margin-bottom: 36px;
+}
+
+.clz-post-tags {
+	margin-bottom: 20px;
+}
+
+.clz-post-title {
+	margin: 0 0 22px;
+	font-family: var(--clz-font-head);
+	font-size: clamp(30px, 5vw, 52px);
+	font-weight: 700;
+	line-height: 1.08;
+	letter-spacing: -0.025em;
+	color: var(--clz-ink);
+}
+
+.clz-post-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 12px;
+	font-size: 15px;
+	color: var(--clz-body);
+}
+
+.clz-post-meta .clz-avatar {
+	width: 40px;
+	height: 40px;
+}
+
+.clz-post-meta-sep {
+	color: var(--clz-muted);
+}
+
+.clz-post-featured {
+	margin: 0 0 44px;
+}
+
+.clz-post-featured img {
+	display: block;
+	width: 100%;
+	height: auto;
+	max-height: 520px;
+	object-fit: cover;
+	border-radius: var(--clz-radius);
+	box-shadow: var(--clz-shadow-lg);
+}
+
+.clz-post-content {
+	font-size: 17px;
+	line-height: 1.85;
+	color: #3c3d55;
+}
+
+.clz-post-content > * + * {
+	margin-top: 1.4em;
+}
+
+.clz-post-content h2,
+.clz-post-content h3,
+.clz-post-content h4 {
+	font-family: var(--clz-font-head);
+	color: var(--clz-ink);
+	letter-spacing: -0.01em;
+	line-height: 1.25;
+	margin-top: 1.8em;
+}
+
+.clz-post-content h2 { font-size: 28px; font-weight: 700; }
+.clz-post-content h3 { font-size: 22px; font-weight: 600; }
+.clz-post-content h4 { font-size: 18px; font-weight: 600; }
+
+.clz-post-content a {
+	color: var(--clz-accent-2);
+	text-decoration: underline;
+	text-underline-offset: 3px;
+}
+
+.clz-post-content a:hover {
+	color: var(--clz-accent);
+}
+
+.clz-post-content img {
+	max-width: 100%;
+	height: auto;
+	border-radius: var(--clz-radius-sm);
+}
+
+.clz-post-content blockquote {
+	margin: 1.8em 0;
+	padding: 4px 0 4px 24px;
+	border-left: 3px solid var(--clz-accent);
+	font-family: var(--clz-font-head);
+	font-size: 20px;
+	font-weight: 500;
+	line-height: 1.5;
+	color: var(--clz-ink);
+}
+
+.clz-post-content ul,
+.clz-post-content ol {
+	padding-left: 1.4em;
+}
+
+.clz-post-content li + li {
+	margin-top: 0.4em;
+}
+
+.clz-post-content .wp-block-quote {
+	border-left: 3px solid var(--clz-accent);
+	padding-left: 24px;
+}
+
+/* --------------------------------------------------------------------------
+   8. Related articles
+   -------------------------------------------------------------------------- */
+
+.clz-related {
+	margin-top: 64px;
+	padding-top: 48px;
+	border-top: 1px solid var(--clz-line);
+}
+
+.clz-related-title {
+	margin: 0 0 28px;
+	font-family: var(--clz-font-head);
+	font-size: 26px;
+	font-weight: 700;
+	letter-spacing: -0.01em;
+	color: var(--clz-ink);
+}
+
+.clz-grid--related {
+	grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+/* --------------------------------------------------------------------------
+   9. Post navigation, author box, comments (generic restyle)
+   -------------------------------------------------------------------------- */
+
+.clz-single .post-navigation {
+	margin: 48px 0 0;
+}
+
+.clz-single .nav-links {
+	display: flex;
+	justify-content: space-between;
+	gap: 16px;
+}
+
+.clz-single .nav-links a {
+	font-weight: 600;
+	color: var(--clz-ink);
+}
+
+.clz-single .nav-links a:hover {
+	color: var(--clz-accent-2);
+}
+
+.clz-single .author-box {
+	margin-top: 48px;
+	padding: 28px;
+	background: var(--clz-surface);
+	border: 1px solid var(--clz-line);
+	border-radius: var(--clz-radius);
+}
+
+.clz-single .author-box .author-avatar img {
+	border-radius: 50%;
+}
+
+.clz-single .comments-area {
+	margin-top: 56px;
+}
+
+.clz-single .comments-area .comment-reply-title,
+.clz-single .comments-area .comments-title {
+	font-family: var(--clz-font-head);
+	color: var(--clz-ink);
+}
+
+/* --------------------------------------------------------------------------
+   10. Placeholder (posts without a featured image)
+   -------------------------------------------------------------------------- */
+
+.clz-ph {
+	display: block;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	background:
+		radial-gradient(120% 120% at 20% 10%, rgba(255, 119, 72, 0.28), transparent 45%),
+		radial-gradient(120% 120% at 90% 90%, rgba(26, 26, 122, 0.35), transparent 50%),
+		linear-gradient(135deg, #0f1136 0%, #000060 55%, #1a1a7a 100%);
+}
+
+.clz-ph::after {
+	content: "";
+	position: absolute;
+	inset: 0;
+	margin: auto;
+	width: 54px;
+	height: 54px;
+	border-radius: 14px;
+	background: rgba(255, 255, 255, 0.14);
+	-webkit-mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'><rect x='3' y='3' width='18' height='18' rx='4'/><circle cx='9' cy='9' r='2'/><path d='M21 15l-5-5L5 21'/></svg>") center / contain no-repeat;
+	mask: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2'><rect x='3' y='3' width='18' height='18' rx='4'/><circle cx='9' cy='9' r='2'/><path d='M21 15l-5-5L5 21'/></svg>") center / contain no-repeat;
+}
+
+/* --------------------------------------------------------------------------
+   11. Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+	.clz-grid,
+	.clz-grid--related {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+	}
+
+	.clz-hero {
+		grid-template-columns: 1fr;
+		gap: 28px;
+		padding: 36px;
+	}
+
+	.clz-hero-media {
+		order: -1;
+		aspect-ratio: 16 / 9;
+	}
+}
+
+@media (max-width: 640px) {
+	.clz-blog,
+	.clz-single {
+		padding: 40px 18px 56px;
+	}
+
+	.clz-grid,
+	.clz-grid--related {
+		grid-template-columns: 1fr;
+	}
+
+	.clz-hero {
+		padding: 22px;
+		margin-bottom: 40px;
+		border-radius: 20px;
+	}
+
+	.clz-hero-title {
+		font-size: 26px;
+	}
+
+	.clz-card-title {
+		font-size: 18px;
+	}
+
+	.clz-filters {
+		gap: 8px;
+	}
+
+	.clz-filter {
+		padding: 8px 16px;
+		font-size: 13px;
+	}
+
+	.clz-post-content {
+		font-size: 16px;
+	}
+
+	.clz-single .nav-links {
+		flex-direction: column;
+	}
+}
+
+/* --------------------------------------------------------------------------
+   12. Motion preferences
+   -------------------------------------------------------------------------- */
+
+@media (prefers-reduced-motion: reduce) {
+	.clz-hero,
+	.clz-card,
+	.clz-hero-media img,
+	.clz-card-media img,
+	.clz-back,
+	.clz-filter,
+	[data-aos] {
+		transition: none !important;
+		transform: none !important;
+	}
+}
