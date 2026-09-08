@@ -12,9 +12,9 @@
   body { margin: 0; background: #fff; }
   .demo-nav {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 40px; background: #fff;
+    padding: 18px 40px; background: #fff;
     box-shadow: 0 2px 12px rgba(33,37,41,.08);
-    position: sticky; top: 0; z-index: 50;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   }
   .demo-logo { font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 20px; color: #000060; }
   .demo-nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
@@ -35,7 +35,7 @@
     <a class="demo-cta" href="#">Get a demo</a>
   </nav>
 
-  <div class="clz-single-section">
+  <div class="clz-single-section" style="padding-top:120px;">
     <div class="clz-container">
       <div class="clz-single">
         <a class="clz-back" href="index.html">&larr; Back to all articles</a>
@@ -53,7 +53,7 @@
               <span class="clz-author-name">Siddhartha Jain</span>
             </span>
             <span class="clz-post-meta-sep">·</span>
-            <span>August 28, 2026</span>
+            <span>Aug 28, 2026</span>
             <span class="clz-post-meta-sep">·</span>
             <span>2 min read</span>
           </div>

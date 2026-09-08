@@ -12,61 +12,52 @@ Updated: 2026-09-08
 */
 
 /* ==========================================================================
-   Clazar-style blog design — SiteOrigin Corp child theme
-   Design system reverse-engineered from clazar.io/blog production CSS
-   (Red Hat Display / Red Hat Text, lavender sections, gray cards,
-    indigo headings, purple + orange accents).
+   Clazar.io/blog design — reproduced from the site's production stylesheet
+   (colors taken from the live :root variables, fonts & spacing from the
+    blog-specific classes: blog-pinned / blog-head-bar / blog-cards).
    ========================================================================== */
 
 :root {
-	/* Brand */
-	--clz-indigo:    #040070;   /* primary heading color */
-	--clz-indigo-2:  #05008c;   /* hero heading */
-	--clz-navy:      #000060;   /* buttons / active states */
-	--clz-purple:    #5c4cf9;   /* purple accent */
-	--clz-purple-2:  #5a4df5;
-	--clz-purple-3:  #6867b8;
-	--clz-orange:    #ff7748;   /* CTA orange */
-	--clz-orange-2:  #e6673e;   /* active link / tag text */
-	--clz-orange-3:  #cc5936;   /* dark orange hover */
-	--clz-orange-soft:#fde9e2;  /* tag background */
+	--clz-black-1:    #212529;
+	--clz-black-2:    #343b41;
+	--clz-black-3:    #202428;
+	--clz-indigo:     #05008c;
+	--clz-indigo-2:   #040070;
+	--clz-navy:       #000060;
+	--clz-purple:     #5c4cf9;
+	--clz-orange:     #ff7748;
+	--clz-orange-2:   #e6673e;
+	--clz-orange-3:   #cc5936;
+	--clz-orange-tag: #fde9e2;
+	--clz-teal:       #00b2d1;
+	--clz-teal-2:     #009ab3;
+	--clz-blue:       #0080ff;
+	--clz-green:      #38b784;
 
-	/* Backgrounds */
-	--clz-lavender:   #dedbfd;  /* section head */
-	--clz-lavender-2: #f5f4fe;  /* cards section */
-	--clz-lavender-3: #ebe9fd;  /* suggested */
-	--clz-gray-bg:    #f8f8fd;  /* related / gray sections */
-	--clz-card-bg:    #f9f9f9;  /* card */
+	--clz-gray-1:  #6e777e;
+	--clz-gray-2:  #aeb6be;
+	--clz-gray-3:  #4a5158;
+	--clz-gray-4:  #666;
+	--clz-gray-5:  #4d4d4d;
+	--clz-white:   #ffffff;
+
+	--clz-lavender:   #dedbfd;
+	--clz-lavender-2: #f5f4fe;
+	--clz-lavender-3: #ebe9fd;
+	--clz-gray-bg:    #f8f8fd;
+	--clz-card-bg:    #f9f9f9;
 	--clz-card-hover: #f2f2f2;
 
-	/* Text */
-	--clz-text:   #4a5158;  /* body gray */
-	--clz-muted:  #6e777e;
-	--clz-faint:  #8f979e;
-	--clz-black:  #1a1a1a;
-	--clz-white:  #ffffff;
+	--clz-font-head: "Red Hat Display", "Figtree", sans-serif;
+	--clz-font-body: "Red Hat Text", sans-serif;
 
-	/* Auxiliary */
-	--clz-teal:   #00b2d1;  /* back button */
-	--clz-blue:   #0080ff;  /* blue links */
-	--clz-yellow: #ffbd12;
-
-	/* Fonts */
-	--clz-font-head: "Red Hat Display", "Figtree", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	--clz-font-hero: "Figtree", "Red Hat Display", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-	--clz-font-body: "Red Hat Text", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-
-	--clz-container: 1206px;
+	--clz-container: 1210px;
 	--clz-radius: 8px;
 }
 
 /* --------------------------------------------------------------------------
-   0. Full-width blog area
+   0. Layout — full-bleed sections (Clazar blog is full width, no sidebar)
    -------------------------------------------------------------------------- */
-
-html, body {
-	overflow-x: hidden;
-}
 
 body.blog .content-area,
 body.archive .content-area,
@@ -108,9 +99,10 @@ body.single-post .site-content {
 .clz-blog,
 .clz-single {
 	font-family: var(--clz-font-body);
-	color: var(--clz-text);
-	-webkit-font-smoothing: antialiased;
+	color: var(--clz-black-1);
+	font-size: 16px;
 	line-height: 150%;
+	-webkit-font-smoothing: antialiased;
 }
 
 .clz-blog a,
@@ -119,106 +111,54 @@ body.single-post .site-content {
 }
 
 /* --------------------------------------------------------------------------
-   1. Section head (lavender)
-   -------------------------------------------------------------------------- */
-
-.clz-sechead {
-	background-color: var(--clz-lavender);
-	padding-top: 120px;
-	padding-bottom: 88px;
-	text-align: center;
-	overflow: visible;
-}
-
-.clz-sechead-inner {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	gap: 16px;
-	max-width: 820px;
-	margin: 0 auto;
-}
-
-.clz-kicker {
-	display: inline-flex;
-	align-items: center;
-	gap: 8px;
-	color: var(--clz-indigo);
-	font-family: var(--clz-font-body);
-	font-size: 14px;
-	font-weight: 700;
-	line-height: 130%;
-}
-
-.clz-kicker::before {
-	content: "";
-	width: 6px;
-	height: 6px;
-	border-radius: 50%;
-	background-color: var(--clz-orange);
-}
-
-.clz-blog-title {
-	margin: 0;
-	color: var(--clz-indigo-2);
-	font-family: var(--clz-font-hero);
-	font-size: 44px;
-	font-weight: 700;
-	line-height: 125%;
-	letter-spacing: -0.02em;
-}
-
-.clz-blog-subtitle {
-	margin: 0;
-	max-width: 640px;
-	color: var(--clz-muted);
-	font-size: 17px;
-	line-height: 150%;
-}
-
-/* --------------------------------------------------------------------------
-   2. Featured post (horizontal card)
+   1. Featured post (blog-pinned)
    -------------------------------------------------------------------------- */
 
 .clz-featured-section {
-	background-color: var(--clz-lavender);
-	padding-bottom: 80px;
+	background-color: var(--clz-white);
+	padding: 120px 0 64px;
 }
 
 .clz-featured {
 	display: grid;
 	grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+	grid-gap: 40px;
 	background-color: var(--clz-card-bg);
 	border-radius: var(--clz-radius);
-	overflow: hidden;
+	padding: 8px;
+	transition: background-color 0.2s ease;
+}
+
+.clz-featured:hover {
+	background-color: var(--clz-card-hover);
 }
 
 .clz-featured-body {
 	display: flex;
 	flex-direction: column;
 	align-items: flex-start;
-	gap: 18px;
-	padding: 40px 44px;
+	gap: 16px;
+	padding: 32px 24px 32px 24px;
 }
 
 .clz-featured-read {
-	color: var(--clz-faint);
-	font-size: 14px;
-	line-height: 20px;
+	color: var(--clz-gray-4);
+	font-size: 16px;
+	line-height: 150%;
+	letter-spacing: -0.01em;
 }
 
 .clz-featured-title {
 	margin: 0;
-	color: var(--clz-indigo);
 	font-family: var(--clz-font-head);
-	font-size: clamp(24px, 2.6vw, 34px);
+	font-size: clamp(24px, 2.4vw, 32px);
 	font-weight: 700;
 	line-height: 120%;
 	letter-spacing: -0.01em;
 }
 
 .clz-featured-title a {
-	color: inherit;
+	color: var(--clz-indigo-2);
 }
 
 .clz-featured-title a:hover {
@@ -231,23 +171,34 @@ body.single-post .site-content {
 	align-items: center;
 	gap: 12px;
 	margin-top: auto;
-	color: var(--clz-muted);
+	color: var(--clz-gray-1);
 	font-size: 14px;
 	line-height: 20px;
 }
 
-.clz-featured-excerpt {
-	margin: 0;
-	color: var(--clz-text);
-	font-size: 16px;
-	line-height: 160%;
+.clz-featured-meta .clz-avatar {
+	width: 32px;
+	height: 32px;
+}
+
+.clz-featured-meta .clz-author-name {
+	color: var(--clz-gray-1);
+	font-size: 14px;
+}
+
+.clz-featured-divider {
+	width: 1px;
+	height: 32px;
+	background-color: #999;
 }
 
 .clz-featured-media {
 	display: block;
 	position: relative;
+	border-radius: var(--clz-radius);
+	overflow: hidden;
 	min-height: 320px;
-	height: 100%;
+	margin: -8px -8px -8px 0;
 }
 
 .clz-featured-media img {
@@ -259,45 +210,45 @@ body.single-post .site-content {
 }
 
 /* --------------------------------------------------------------------------
-   3. Cards section (light lavender)
+   2. Cards section (light lavender)
    -------------------------------------------------------------------------- */
 
 .clz-cards-section {
 	background-color: var(--clz-lavender-2);
-	padding-top: 40px;
-	padding-bottom: 80px;
+	padding: 72px 0 80px;
 }
 
-/* Filter pill bar */
+/* Category filter bar (blog-head-bar) */
 
 .clz-filters {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
-	gap: 4px 28px;
+	align-items: stretch;
+	gap: 8px 40px;
 	background-color: var(--clz-white);
 	border-radius: 46px;
 	padding: 16px 28px;
-	margin-bottom: 48px;
+	margin-bottom: 56px;
 }
 
 .clz-filter {
-	color: var(--clz-text);
+	position: relative;
+	color: var(--clz-gray-3);
 	font-family: var(--clz-font-body);
 	font-size: 16px;
-	font-weight: 400;
 	line-height: 22px;
-	padding: 6px 2px;
+	text-decoration: none;
+	padding: 0 2px 13px;
 	border-bottom: 3px solid transparent;
-	transition: color 0.2s ease, border-color 0.2s ease;
+	transition: color 0.2s ease;
 }
 
 .clz-filter:hover {
-	color: var(--clz-indigo);
+	color: var(--clz-indigo-2);
 }
 
 .clz-filter.is-active {
-	color: var(--clz-indigo);
+	color: var(--clz-indigo-2);
 	border-bottom-color: var(--clz-purple);
 	font-weight: 700;
 }
@@ -316,8 +267,8 @@ body.single-post .site-content {
 	background-color: var(--clz-card-bg);
 	border-radius: var(--clz-radius);
 	overflow: hidden;
-	color: var(--clz-black);
-	transition: background-color 0.25s ease;
+	color: var(--clz-black-1);
+	transition: background-color 0.2s ease;
 }
 
 .clz-card:hover {
@@ -338,11 +289,6 @@ body.single-post .site-content {
 	width: 100%;
 	height: 100%;
 	object-fit: cover;
-	transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
-}
-
-.clz-card:hover .clz-card-media img {
-	transform: scale(1.05);
 }
 
 .clz-card-body {
@@ -359,19 +305,18 @@ body.single-post .site-content {
 	justify-content: space-between;
 	align-items: center;
 	gap: 12px;
-	color: var(--clz-muted);
+	color: var(--clz-gray-1);
 	font-size: 14px;
 	line-height: 20px;
 }
 
 .clz-card-read {
-	color: var(--clz-faint);
+	color: var(--clz-gray-1);
 	white-space: nowrap;
 }
 
 .clz-card-title {
 	margin: 0;
-	color: var(--clz-black);
 	font-family: var(--clz-font-head);
 	font-size: 20px;
 	font-weight: 700;
@@ -380,7 +325,7 @@ body.single-post .site-content {
 }
 
 .clz-card-title a {
-	color: inherit;
+	color: var(--clz-black-1);
 }
 
 .clz-card-title a:hover {
@@ -418,34 +363,24 @@ body.single-post .site-content {
 }
 
 .clz-author-name {
-	color: var(--clz-muted);
+	color: var(--clz-gray-1);
 	font-size: 14px;
-	font-weight: 400;
 	line-height: 20px;
 }
 
-.clz-featured-meta .clz-avatar {
-	width: 32px;
-	height: 32px;
-}
-
-.clz-featured-meta .clz-author-name {
-	color: var(--clz-muted);
-	font-size: 14px;
-}
-
-/* Category tag pill (orange, Clazar style) */
+/* Category tag pill (orange) */
 
 .clz-tag {
 	display: inline-flex;
 	align-items: center;
 	color: var(--clz-orange-2);
-	background-color: var(--clz-orange-soft);
+	background-color: var(--clz-orange-tag);
 	border-radius: var(--clz-radius);
 	padding: 4px 12px;
 	font-size: 14px;
 	font-weight: 600;
 	line-height: 150%;
+	letter-spacing: -0.00875rem;
 	transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -455,28 +390,7 @@ body.single-post .site-content {
 }
 
 /* --------------------------------------------------------------------------
-   3b. Placeholder (posts without a featured image)
-   -------------------------------------------------------------------------- */
-
-.clz-ph {
-	display: block;
-	position: absolute;
-	inset: 0;
-	width: 100%;
-	height: 100%;
-	background:
-		radial-gradient(120% 120% at 20% 10%, rgba(255, 119, 72, 0.25), transparent 45%),
-		radial-gradient(120% 120% at 90% 90%, rgba(92, 76, 249, 0.30), transparent 50%),
-		linear-gradient(135deg, #040070 0%, #05008c 55%, #5c4cf9 100%);
-}
-
-.clz-card-media,
-.clz-featured-media {
-	background-color: var(--clz-lavender-3);
-}
-
-/* --------------------------------------------------------------------------
-   4. Pagination ("View more")
+   3. Pagination
    -------------------------------------------------------------------------- */
 
 .clz-pagination {
@@ -486,6 +400,7 @@ body.single-post .site-content {
 
 .clz-pagination .nav-links {
 	display: flex;
+	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
 	gap: 12px;
@@ -497,50 +412,50 @@ body.single-post .site-content {
 	justify-content: center;
 	min-width: 44px;
 	height: 44px;
-	padding: 0 14px;
-	color: var(--clz-indigo);
+	padding: 8px 24px;
+	color: var(--clz-navy);
 	border: 1px solid var(--clz-navy);
 	border-radius: 2px;
 	font-size: 16px;
 	font-weight: 600;
 	line-height: 120%;
-	transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+	letter-spacing: 0.02em;
+	text-transform: uppercase;
+	transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
 .clz-pagination .page-numbers:hover {
-	transform: scale(1.05);
-	background-color: var(--clz-indigo);
+	transform: scale(1.1);
+	background-color: var(--clz-navy);
 	color: var(--clz-white);
 }
 
 .clz-pagination .page-numbers.current {
-	background-color: var(--clz-indigo);
+	background-color: var(--clz-navy);
 	color: var(--clz-white);
-	border-color: var(--clz-indigo);
+	border-color: var(--clz-navy);
 }
 
 .clz-pagination .page-numbers.dots {
 	border-color: transparent;
 	background: transparent;
-	color: var(--clz-text);
+	color: var(--clz-gray-1);
 }
 
 .clz-empty {
 	padding: 60px 0;
 	font-size: 16px;
 	text-align: center;
-	color: var(--clz-text);
+	color: var(--clz-gray-1);
 }
 
 /* --------------------------------------------------------------------------
-   5. Purple CTA band (blog)
+   4. Purple CTA band
    -------------------------------------------------------------------------- */
 
 .clz-cta {
 	background-color: var(--clz-purple);
-	color: var(--clz-white);
-	padding-top: 40px;
-	padding-bottom: 40px;
+	padding: 40px 0;
 }
 
 .clz-cta-inner {
@@ -548,7 +463,7 @@ body.single-post .site-content {
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
-	gap: 20px;
+	gap: 24px;
 	text-align: center;
 }
 
@@ -556,10 +471,9 @@ body.single-post .site-content {
 	margin: 0;
 	color: var(--clz-white);
 	font-family: var(--clz-font-head);
-	font-size: clamp(26px, 3vw, 36px);
+	font-size: clamp(28px, 3.2vw, 40px);
 	font-weight: 700;
 	line-height: 120%;
-	letter-spacing: -0.01em;
 }
 
 .clz-cta-actions {
@@ -585,7 +499,7 @@ body.single-post .site-content {
 }
 
 .clz-btn:hover {
-	transform: scale(1.05);
+	transform: scale(1.1);
 }
 
 .clz-btn--orange {
@@ -604,40 +518,40 @@ body.single-post .site-content {
 }
 
 /* --------------------------------------------------------------------------
-   6. Archive header
+   5. Archive header (lavender)
    -------------------------------------------------------------------------- */
 
-.clz-archive-head {
+.clz-archive-head-section {
+	background-color: var(--clz-lavender);
+	padding: 130px 0 64px;
 	text-align: center;
-	margin-bottom: 40px;
 }
 
 .clz-archive-title {
-	margin: 0 0 12px;
-	color: var(--clz-indigo-2);
-	font-family: var(--clz-font-hero);
-	font-size: 44px;
+	margin: 0;
+	color: var(--clz-indigo);
+	font-family: var(--clz-font-head);
+	font-size: clamp(32px, 4vw, 44px);
 	font-weight: 700;
 	line-height: 125%;
 	letter-spacing: -0.02em;
 }
 
 .clz-archive-desc {
-	margin: 0 auto;
+	margin: 12px auto 0;
 	max-width: 640px;
-	color: var(--clz-muted);
+	color: var(--clz-gray-1);
 	font-size: 16px;
 	line-height: 150%;
 }
 
 /* --------------------------------------------------------------------------
-   7. Single post
+   6. Single post
    -------------------------------------------------------------------------- */
 
 .clz-single-section {
 	background-color: var(--clz-white);
-	padding-top: 64px;
-	padding-bottom: 80px;
+	padding: 56px 0 64px;
 }
 
 .clz-single {
@@ -652,31 +566,30 @@ body.single-post .site-content {
 	font-size: 16px;
 	font-weight: 600;
 	line-height: 150%;
-	margin-bottom: 32px;
 	letter-spacing: -0.01em;
-	transition: color 0.2s ease;
+	margin-bottom: 28px;
 }
 
 .clz-back:hover {
-	color: var(--clz-indigo);
+	color: var(--clz-indigo-2);
 }
 
 .clz-post-head {
-	margin-bottom: 40px;
+	margin-bottom: 32px;
 }
 
 .clz-post-tags {
 	display: flex;
 	flex-wrap: wrap;
 	gap: 10px;
-	margin-bottom: 22px;
+	margin-bottom: 20px;
 }
 
 .clz-post-title {
-	margin: 0 0 24px;
-	color: var(--clz-indigo);
+	margin: 0 0 22px;
+	color: var(--clz-indigo-2);
 	font-family: var(--clz-font-head);
-	font-size: clamp(30px, 4.4vw, 46px);
+	font-size: clamp(32px, 4.4vw, 46px);
 	font-weight: 700;
 	line-height: 115%;
 	letter-spacing: -0.02em;
@@ -687,7 +600,7 @@ body.single-post .site-content {
 	flex-wrap: wrap;
 	align-items: center;
 	gap: 12px;
-	color: var(--clz-muted);
+	color: var(--clz-gray-1);
 	font-size: 15px;
 	line-height: 22px;
 }
@@ -698,11 +611,11 @@ body.single-post .site-content {
 }
 
 .clz-post-meta-sep {
-	color: var(--clz-faint);
+	color: var(--clz-gray-2);
 }
 
 .clz-post-featured {
-	margin: 0 0 44px;
+	margin: 0 0 40px;
 }
 
 .clz-post-featured img {
@@ -713,28 +626,28 @@ body.single-post .site-content {
 }
 
 .clz-post-content {
-	color: var(--clz-text);
 	font-family: var(--clz-font-body);
 	font-size: 18px;
 	line-height: 150%;
+	color: #333;
+	letter-spacing: -0.01125rem;
 }
 
 .clz-post-content p {
-	margin: 0 0 24px;
+	margin: 24px 0;
 }
 
 .clz-post-content h2 {
-	color: var(--clz-indigo);
+	color: var(--clz-navy);
 	font-family: var(--clz-font-head);
 	font-size: 32px;
 	font-weight: 700;
 	line-height: 120%;
 	margin: 40px 0 24px;
-	letter-spacing: -0.01em;
 }
 
 .clz-post-content h3 {
-	color: var(--clz-text);
+	color: #1a1a1a;
 	font-family: var(--clz-font-head);
 	font-size: 22px;
 	font-weight: 500;
@@ -743,7 +656,7 @@ body.single-post .site-content {
 }
 
 .clz-post-content h4 {
-	color: var(--clz-indigo);
+	color: var(--clz-navy);
 	font-family: var(--clz-font-head);
 	font-size: 18px;
 	font-weight: 700;
@@ -751,7 +664,7 @@ body.single-post .site-content {
 }
 
 .clz-post-content a {
-	color: var(--clz-black);
+	color: var(--clz-black-1);
 	text-decoration: underline;
 }
 
@@ -761,15 +674,20 @@ body.single-post .site-content {
 
 .clz-post-content blockquote,
 .clz-post-content .wp-block-quote {
-	color: var(--clz-indigo);
+	color: var(--clz-navy);
 	border-left: 4px solid var(--clz-orange);
 	margin: 24px 0;
 	padding: 0 0 0 16px;
+	font-family: var(--clz-font-body);
+	font-size: 18px;
 	font-weight: 600;
+	line-height: 150%;
+	letter-spacing: -0.01125rem;
 }
 
-.clz-post-content blockquote p {
-	color: var(--clz-indigo);
+.clz-post-content blockquote p,
+.clz-post-content .wp-block-quote p {
+	color: var(--clz-navy);
 }
 
 .clz-post-content ul,
@@ -794,30 +712,29 @@ body.single-post .site-content {
 }
 
 .clz-post-content figcaption {
-	color: var(--clz-text);
+	color: var(--clz-gray-3);
 	font-size: 14px;
 	line-height: 22px;
 	margin-top: 8px;
+	text-align: center;
 }
 
 /* --------------------------------------------------------------------------
-   8. Related posts
+   7. Related posts
    -------------------------------------------------------------------------- */
 
 .clz-related-section {
 	background-color: var(--clz-gray-bg);
-	padding-top: 72px;
-	padding-bottom: 72px;
+	padding: 72px 0;
 }
 
 .clz-related-title {
 	margin: 0 0 32px;
-	color: var(--clz-indigo);
+	color: var(--clz-indigo-2);
 	font-family: var(--clz-font-head);
 	font-size: 30px;
 	font-weight: 700;
 	line-height: 120%;
-	letter-spacing: -0.01em;
 	text-align: center;
 }
 
@@ -827,7 +744,7 @@ body.single-post .site-content {
 }
 
 /* --------------------------------------------------------------------------
-   9. Post navigation / author box / comments (gentle restyle)
+   8. Post navigation / author box / comments
    -------------------------------------------------------------------------- */
 
 .clz-single .post-navigation {
@@ -841,7 +758,7 @@ body.single-post .site-content {
 }
 
 .clz-single .nav-links a {
-	color: var(--clz-indigo);
+	color: var(--clz-indigo-2);
 	font-weight: 600;
 }
 
@@ -867,14 +784,30 @@ body.single-post .site-content {
 .clz-single .comments-area .comment-reply-title,
 .clz-single .comments-area .comments-title {
 	font-family: var(--clz-font-head);
-	color: var(--clz-indigo);
+	color: var(--clz-indigo-2);
+}
+
+/* --------------------------------------------------------------------------
+   9. Placeholder (posts without featured image)
+   -------------------------------------------------------------------------- */
+
+.clz-ph {
+	display: block;
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	background:
+		radial-gradient(120% 120% at 20% 10%, rgba(255, 119, 72, 0.22), transparent 45%),
+		radial-gradient(120% 120% at 90% 90%, rgba(92, 76, 249, 0.28), transparent 50%),
+		linear-gradient(135deg, #040070 0%, #05008c 55%, #5c4cf9 100%);
 }
 
 /* --------------------------------------------------------------------------
    10. Responsive
    -------------------------------------------------------------------------- */
 
-@media (max-width: 1024px) {
+@media (max-width: 991px) {
 	.clz-grid,
 	.clz-grid--related {
 		grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -883,6 +816,7 @@ body.single-post .site-content {
 
 	.clz-featured {
 		grid-template-columns: 1fr;
+		padding: 0;
 	}
 
 	.clz-featured-body {
@@ -890,8 +824,10 @@ body.single-post .site-content {
 	}
 
 	.clz-featured-media {
-		min-height: 260px;
 		order: 0;
+		margin: 0;
+		min-height: 260px;
+		border-radius: var(--clz-radius) var(--clz-radius) 0 0;
 	}
 }
 
@@ -901,14 +837,12 @@ body.single-post .site-content {
 		padding-right: 20px;
 	}
 
-	.clz-sechead {
-		padding-top: 80px;
-		padding-bottom: 60px;
+	.clz-featured-section {
+		padding: 72px 0 48px;
 	}
 
-	.clz-blog-title,
-	.clz-archive-title {
-		font-size: 32px;
+	.clz-cards-section {
+		padding: 48px 0 56px;
 	}
 
 	.clz-grid,
@@ -918,11 +852,11 @@ body.single-post .site-content {
 	}
 
 	.clz-featured-body {
-		padding: 24px;
+		padding: 20px;
 	}
 
 	.clz-featured-media {
-		min-height: 220px;
+		min-height: 200px;
 	}
 
 	.clz-card-media {
@@ -931,7 +865,7 @@ body.single-post .site-content {
 
 	.clz-filters {
 		border-radius: 24px;
-		gap: 2px 20px;
+		gap: 4px 20px;
 		padding: 14px 18px;
 	}
 
@@ -946,7 +880,7 @@ body.single-post .site-content {
 
 @media (prefers-reduced-motion: reduce) {
 	.clz-card,
-	.clz-card-media img,
+	.clz-featured,
 	.clz-filter,
 	.clz-btn,
 	.clz-back,

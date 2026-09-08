@@ -1,6 +1,6 @@
 <?php
 /**
- * The template for displaying all single posts — Clazar-style layout.
+ * The template for displaying all single posts — Clazar.io/blog style layout.
  *
  * @license GPL 2.0
  */
@@ -31,7 +31,7 @@ $clz_back_url   = $clz_posts_page ? get_permalink( $clz_posts_page ) : home_url(
 								<div class="clz-post-meta">
 									<?php echo clz_author( 40 ); ?>
 									<span class="clz-post-meta-sep">·</span>
-									<span class="clz-post-date"><?php echo get_the_date(); ?></span>
+									<span class="clz-post-date"><?php echo get_the_date( 'M j, Y' ); ?></span>
 									<span class="clz-post-meta-sep">·</span>
 									<span class="clz-post-read"><?php echo esc_html( clz_reading_time() ); ?></span>
 								</div>
@@ -115,7 +115,7 @@ $clz_back_url   = $clz_posts_page ? get_permalink( $clz_posts_page ) : home_url(
 									</a>
 									<div class="clz-card-body">
 										<div class="clz-card-meta">
-											<span class="clz-card-date"><?php echo get_the_date(); ?></span>
+											<span class="clz-card-date"><?php echo get_the_date( 'F j, Y' ); ?></span>
 											<span class="clz-card-read"><?php echo esc_html( clz_reading_time() ); ?></span>
 										</div>
 										<h3 class="clz-card-title">

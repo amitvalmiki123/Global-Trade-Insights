@@ -13,16 +13,16 @@
   /* Demo shell — not part of the theme */
   .demo-nav {
     display: flex; align-items: center; justify-content: space-between;
-    padding: 14px 40px; background: #fff;
+    padding: 18px 40px; background: #fff;
     box-shadow: 0 2px 12px rgba(33,37,41,.08);
-    position: sticky; top: 0; z-index: 50;
+    position: fixed; top: 0; left: 0; right: 0; z-index: 50;
   }
   .demo-logo { font-family: 'Red Hat Display', sans-serif; font-weight: 700; font-size: 20px; color: #000060; }
   .demo-nav ul { display: flex; gap: 26px; list-style: none; margin: 0; padding: 0; }
   .demo-nav a { color: #4a5158; text-decoration: none; font: 500 14px 'Red Hat Text', sans-serif; text-transform: uppercase; letter-spacing: .04em; }
   .demo-login { color:#333; border:1px solid #ff7748; border-radius:2px; padding:8px 16px; font:600 16px 'Red Hat Text',sans-serif; text-transform:uppercase; }
   .demo-cta { background:#ff7748; color:#fff; border-radius:2px; padding:8px 24px; font:600 16px 'Red Hat Text',sans-serif; text-transform:uppercase; letter-spacing:.02em; }
-  .demo-note { margin: 18px 40px 0; padding: 12px 16px; background:#fde9e2; color:#e6673e; border-radius:8px; font:600 13px 'Red Hat Text',sans-serif; }
+  .demo-note { margin: 92px 40px 0; padding: 12px 16px; background:#fde9e2; color:#e6673e; border-radius:8px; font:600 13px 'Red Hat Text',sans-serif; }
 </style>
 </head>
 <body>
@@ -46,31 +46,19 @@
   </div>
 
   <div class="clz-blog">
-    <!-- 1. Section head (lavender) -->
-    <section class="clz-sechead" style="padding-top:72px;padding-bottom:64px;">
-      <div class="clz-container">
-        <div class="clz-sechead-inner">
-          <span class="clz-kicker">Blog</span>
-          <h1 class="clz-blog-title">Navigating Global Trade with Expert Insights</h1>
-          <p class="clz-blog-subtitle">Deep dives, product updates and practical guides for scaling revenue on cloud marketplaces.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 2. Featured post (horizontal card) -->
-    <section class="clz-featured-section">
+    <!-- 1. Featured post -->
+    <section class="clz-featured-section" style="padding-top:72px;">
       <div class="clz-container">
         <article class="clz-featured">
           <div class="clz-featured-body">
             <span class="clz-featured-read">2 min read</span>
             <h2 class="clz-featured-title"><a href="single.html">How to Integrate Your CRM with Cloud Marketplaces (AWS, Microsoft and Google Cloud)</a></h2>
-            <p class="clz-featured-excerpt">Learn how to connect your CRM with AWS, Microsoft and Google Cloud marketplaces to automate deals, sync buyers and unlock faster co-sell revenue.</p>
             <div class="clz-featured-meta">
               <span class="clz-author">
                 <img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c61190384f9b9dbf8b2c8_Lalit%20Aggarwal.png" alt="">
                 <span class="clz-author-name">Lalit Aggarwal</span>
               </span>
-              <span class="clz-post-meta-sep">·</span>
+              <span class="clz-featured-divider"></span>
               <span>September 7, 2026</span>
             </div>
           </div>
@@ -81,7 +69,7 @@
       </div>
     </section>
 
-    <!-- 3. Cards section (light lavender) -->
+    <!-- 2. Cards + filter -->
     <section class="clz-cards-section">
       <div class="clz-container">
         <nav class="clz-filters">
@@ -106,7 +94,7 @@
               <h3 class="clz-card-title"><a href="single.html">Google Cloud Marketplace Fees in 2026: Rates by Offer Type</a></h3>
               <div class="clz-card-foot">
                 <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c64f26bb48ff7e44807dc_Siddhartha%20Jain.png" alt=""><span class="clz-author-name">Siddhartha Jain</span></span>
-                <div class="clz-card-tags"><a class="clz-tag" href="#">GCP</a></div>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">GCP</a><a class="clz-tag" href="#">Hyperscalers</a></div>
               </div>
             </div>
           </article>
@@ -120,7 +108,7 @@
               <h3 class="clz-card-title"><a href="single.html">Clazar MCP Server: Query Your Cloud Partnerships Data Wherever You Work</a></h3>
               <div class="clz-card-foot">
                 <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c61190384f9b9dbf8b2c8_Lalit%20Aggarwal.png" alt=""><span class="clz-author-name">Lalit Aggarwal</span></span>
-                <div class="clz-card-tags"><a class="clz-tag" href="#">Cloud marketplaces</a></div>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">Cloud marketplaces</a><a class="clz-tag" href="#">AWS</a></div>
               </div>
             </div>
           </article>
@@ -134,7 +122,7 @@
               <h3 class="clz-card-title"><a href="single.html">AWS Marketplace Fees in 2026: Private Offers, CPPO Uplift, and More</a></h3>
               <div class="clz-card-foot">
                 <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/6a7c61190384f9b9dbf8b2c8_Lalit%20Aggarwal.png" alt=""><span class="clz-author-name">Lalit Aggarwal</span></span>
-                <div class="clz-card-tags"><a class="clz-tag" href="#">AWS</a></div>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">AWS</a><a class="clz-tag" href="#">Listing</a></div>
               </div>
             </div>
           </article>
@@ -148,7 +136,7 @@
               <h3 class="clz-card-title"><a href="single.html">Azure Co-Sell vs. IP Co-Sell Eligible: The Complete Guide for ISVs</a></h3>
               <div class="clz-card-foot">
                 <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/67076a7bd09c5b388b7690b4_Mani.jpg" alt=""><span class="clz-author-name">Mani Makkar</span></span>
-                <div class="clz-card-tags"><a class="clz-tag" href="#">Co-Sell</a></div>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">Co-Sell</a><a class="clz-tag" href="#">Clazar philosophy</a></div>
               </div>
             </div>
           </article>
@@ -162,7 +150,7 @@
               <h3 class="clz-card-title"><a href="single.html">December 2025 Product Release: Custom roles, GCP VM deals, and a faster co-sell experience</a></h3>
               <div class="clz-card-foot">
                 <span class="clz-author"><img class="clz-avatar" src="https://cdn.prod.website-files.com/64b0046c4185b2b2afecbd3d/67076a7bd09c5b388b7690b4_Mani.jpg" alt=""><span class="clz-author-name">Mani Makkar</span></span>
-                <div class="clz-card-tags"><a class="clz-tag" href="#">Product</a></div>
+                <div class="clz-card-tags"><a class="clz-tag" href="#">AWS</a><a class="clz-tag" href="#">Product</a></div>
               </div>
             </div>
           </article>
@@ -185,11 +173,10 @@
         <div class="clz-pagination">
           <nav class="navigation pagination">
             <div class="nav-links">
+              <a class="prev page-numbers" href="#">Previous</a>
               <span aria-current="page" class="page-numbers current">1</span>
               <a class="page-numbers" href="#">2</a>
-              <a class="page-numbers" href="#">3</a>
               <span class="page-numbers dots">…</span>
-              <a class="page-numbers" href="#">8</a>
               <a class="next page-numbers" href="#">View more</a>
             </div>
           </nav>
@@ -197,14 +184,14 @@
       </div>
     </section>
 
-    <!-- 4. Purple CTA -->
+    <!-- 3. Purple CTA -->
     <section class="clz-cta">
       <div class="clz-container">
         <div class="clz-cta-inner">
-          <h2 class="clz-cta-title">Get the latest insights in your inbox</h2>
+          <h2 class="clz-cta-title">Ready to transform your cloud sales strategy?</h2>
           <div class="clz-cta-actions">
             <a class="clz-btn clz-btn--orange" href="#">Get started</a>
-            <a class="clz-btn clz-btn--ghost" href="#">See all articles</a>
+            <a class="clz-btn clz-btn--ghost" href="#">See how it works</a>
           </div>
         </div>
       </div>
